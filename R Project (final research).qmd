@@ -1,19 +1,19 @@
 ---
-title: "My Title"
-shorttitle: "Short Title in Running Header"
+title: "Leader's Emotional Intelligence and Job Satisfaction: The Mediating Effect of Leadership Effectiveness"
+shorttitle: "Emotional Intelligence and Job Satisfaction: Leadership Effectiveness"
 author:
-  - name: Jane Doe
+  - name: Yangyang Fu
     corresponding: true
     orcid: 0000-0000-0000-0001
-    email: janedoe@generic.edu
+    email: fyy@uchicago.edu
     affiliations:
-      - name: Generic University
-        department: Department of Scholarly Studies
+      - name: University of Chicago
+        department: Department of Social Science
         address: 1234 Capital St.
-        city: New York
-        region: NY
+        city: Chicago
+        region: IL
         country: USA
-        postal-code: 12084-1234
+        postal-code: 60615
 author-note:
   status-changes: 
     affiliation-change: ~
@@ -22,12 +22,12 @@ author-note:
     study-registration: ~
     data-sharing: ~
     related-report: ~
-    conflict-of-interest: ~
+    conflict-of-interest: The authors have no conflicts of interest to disclose.
     financial-support: ~
     gratitude: ~
     authorship-agreements: ~
-abstract: "This document is a template."
-keywords: [keyword1, keyword2, keyword3]
+abstract: "This document is a template"
+keywords: [emotional intelligence, job satisfaction, leadership effectiveness]
 bibliography: bibliography.bib
 format:
   apaquarto-docx: default
