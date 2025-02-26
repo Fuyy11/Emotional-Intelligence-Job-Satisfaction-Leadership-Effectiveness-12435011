@@ -9,11 +9,11 @@ author:
     affiliations:
       - name: University of Chicago
         department: Department of Social Science
-        address: 1234 Capital St.
+        address: 5801 South Ellis Avenue
         city: Chicago
         region: IL
         country: USA
-        postal-code: 60615
+        postal-code: 60637
 author-note:
   status-changes: 
     affiliation-change: ~
@@ -26,8 +26,12 @@ author-note:
     financial-support: ~
     gratitude: ~
     authorship-agreements: ~
-abstract: "This document is a template"
-keywords: [emotional intelligence, job satisfaction, leadership effectiveness]
+abstract: 
+"Purpose: This study aimed to determine the effect of leaders’ emotional intelligence on employee job satisfaction and explore the mediating role of leadership effectiveness. 
+Methodology: A cross-sectional research design was utilized to study the research objectives. A questionnaire survey collected data from interns and employees, totaling 232 (100 males, 131 females, 1 prefer not to tell). Emotional Intelligence, Job Satisfaction, and Leadership Effectiveness Scales were utilized to measure the three variables.
+Findings:The findings declared that leaders’ emotional intelligence could predict leadership effectiveness and employee job satisfaction, and leadership effectiveness could also predict job satisfaction. Moreover, leadership effectiveness partially mediated the mechanism of leaders’ emotional intelligence to employee job satisfaction.
+Significances: This research gives some insights into the importance of leaders’ emotional intelligence within an organization or a team. It may help organizations or teams to improve employee job satisfaction and enhance efficiency and effectiveness."
+keywords: [Leaders’ emotional intelligence, leadership effectiveness, job satisfaction]
 bibliography: bibliography.bib
 format:
   apaquarto-docx: default
