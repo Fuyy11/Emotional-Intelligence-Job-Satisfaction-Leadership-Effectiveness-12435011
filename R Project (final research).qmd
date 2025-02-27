@@ -185,7 +185,7 @@ print(kable(Normality_table, caption = "Normality"))
 
 ## Descriptive statistics
 
-According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis. The descriptive statistics for the three variables in the present study are shown in Table 1. The mean for leaders’ emotional intelligence people rate was 3.18 (SD=0.85); the mean for leadership effectiveness was 3.17 (SD=0.85); and the mean for job satisfaction was 3.03 (SD=0.80). 
+According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis. The descriptive statistics for the three variables in the present study are shown in Table 1. The mean for leaders’ emotional intelligence people rate was 3.18 (SD=0.85); the mean for leadership effectiveness was 3.17 (SD=0.85); and the mean for job satisfaction was 3.03 (SD=0.80).
 
 ```{r}
 library(psych)
@@ -195,10 +195,18 @@ print(Descriptive_st)
 
 ## Reliability checks of scale
 
-@Cortina1993 indicated that coefficient alpha is one of the most important and widely used statistics in different research fields to test scales’ reliability and internal consistency. According to @Ursachi2015, it’s commonly accepted by the general when Cronbach alpha ranges from 0.6 to 0.7 and when it comes to greater than 0.8, suggesting a good reliability and internal consistency. Table 1 showed that the Cronbach alpha of the leaders’ emotional intelligence scale is 0.916; for leadership effectiveness, it is 0.844; and for job satisfaction, it is 0.903. The coefficient alpha for the three scales is acceptable.
+@Cortina1993 indicated that coefficient alpha is one of the most important and widely used statistics in different research fields to test scales’ reliability and internal consistency. According to @Ursachi2015, it’s commonly accepted by the general when Cronbach alpha ranges from 0.6 to 0.7 and when it comes to greater than 0.8, suggesting a good reliability and internal consistency. Reliability_table showed that the Cronbach alpha of the leaders’ emotional intelligence scale is 0.916; for leadership effectiveness, it is 0.844; and for job satisfaction, it is 0.903. The coefficient alpha for the three scales is acceptable.
 
 ```{r}
+library(psych)
+EI_Cronbach <- alpha(clean_data[, 7:22])$total$raw_alpha
+LE_Cronbach <- alpha(clean_data[, 23:31])$total$raw_alpha
+JS_Cronbach <- alpha(clean_data[, 32:49])$total$raw_alpha
 
+Reliability_table <- data.frame(
+  EI_Cronbach = round (EI_Cronbach,3),LE_Cronbach = round(LE_Cronbach, 3),
+  JS_Cronbach = round(JS_Cronbach,3))
+print(Reliability_table)
 ```
 
 ## Final analysis- Hypothesis Testing
