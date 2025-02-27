@@ -128,7 +128,13 @@ Employees’ job satisfaction would be measured by the 5-point Likert job satisf
 
 The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, three respondents gave the same results on all Likert Scale. 229 questionnaires remain for further data analysis. Thus, the response rate was 98.7%.
 ```{r}
+library(dplyr)
+data <- read.csv("data.csv")
+total_responses <- nrow(data)
+str(data)
+redundant_responses <- data %>%
 
+  
 ```
 
 ## Missing Data
