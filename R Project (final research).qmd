@@ -185,10 +185,12 @@ print(kable(Normality_table, caption = "Normality"))
 
 ## Descriptive statistics
 
-According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis. The descriptive statistics for the three variables in the present study are shown in Table 1. The mean for leaders’ emotional intelligence people rate was 3.168 (SD=0.85); the mean for leadership effectiveness was 3.165 (SD=0.85); and the mean for job satisfaction was 3.029 (SD=0.79). Additionally, Table 1 declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction.
+According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis. The descriptive statistics for the three variables in the present study are shown in Table 1. The mean for leaders’ emotional intelligence people rate was 3.18 (SD=0.85); the mean for leadership effectiveness was 3.17 (SD=0.85); and the mean for job satisfaction was 3.03 (SD=0.80). 
 
 ```{r}
-
+library(psych)
+Descriptive_st <- describe(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
+print(Descriptive_st)
 ```
 
 ## Reliability checks of scale
