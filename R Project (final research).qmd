@@ -129,25 +129,22 @@ Employees’ job satisfaction would be measured by the 5-point Likert job satisf
 The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, three respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was 98.28%.
 ```{r}
 library(dplyr)
+library(knitr)
 data <- read.csv("data.csv")
-str(data)
+
 total_res <- nrow(data)
-print(total_res)
+df_content <- data[, 7:49] # select Likert-scale response columns
 
-colnames(data)
-
-df_content <- data[, 7:49] 
-redundant_res <-
-  data[apply(df_content, 1, function(x) length(unique(x))
-                   == 1), ]
+redundant_res <- data[apply(df_content, 1, function(x) 
+  length(unique(x)) == 1), ] # find whose response are all same at each question
 num_redundant <- nrow(redundant_res)
 
-print(num_redundant)
+response_rate <- (total_res - num_redundant) / total_res * 100 
 
-response_rate <- (total_res - num_redundant) / total_res * 100
-
-print (round(response_rate,2))
-  
+Response_table <- data.frame(
+  Metric = c("Total Responses", "Redundant Responses", "Response Rate (%)"),
+  Value = c(total_res, num_redundant, round(response_rate, 2)))
+print(Response_table) # tried to use knitr, but don't no why there is no table in pdf
 ```
 
 ## Missing Data
@@ -156,15 +153,35 @@ print (round(response_rate,2))
 
 ## Outliers
 
-A univariate outlier analysis was used in the present study. According to @Mowbray2019, univariate outliers are extreme values different from domain cases. Range function was used to identify errors in data entry. Three responses were found invalid because the same answers were used for all rating scales, which were deleted before conducting data analysis.
-```{r}
-
-```
+A univariate outlier analysis was used in the present study. According to @Mowbray2019, univariate outliers are extreme values different from domain cases. Range function was used to identify errors in data entry. Four responses were found invalid because the same answers were used for all rating scales, which were deleted before conducting data analysis.
 
 ## Normality
 
-In the current study, the Kurtosis and Skewness were conducted, revealing that for the variable of leaders’ emotional intelligence, the values of Kurtosis and Skewness were -1.081 and .170; for the variable of leadership effectiveness, the values of Kurtosis and Skewness were -.924 and .106; for the variable of Employee Job Satisfaction, the values of Kurtosis and Skewness were -.428 and .659. @George2010 indicated that the values for skewness and kurtosis of variables are suitable when ranging from -2 to +2. Therefore, the values prove that leaders’ emotional intelligence, leadership effectiveness, and job satisfaction are in a normal univariate distribution. The values of Kurtosis and Skewness are shown in Table 1.
+In the current study, the Kurtosis and Skewness were conducted, revealing that for the variable of leaders’ emotional intelligence, the values of Kurtosis and Skewness were -1.109 and 0.164; for the variable of leadership effectiveness, the values of Kurtosis and Skewness were -0.957 and 0.102; for the variable of Employee Job Satisfaction, the values of Kurtosis and Skewness were -0.479 and 0.649. @George2010 indicated that the values for skewness and kurtosis of variables are suitable when ranging from -2 to +2. Therefore, the values prove that leaders’ emotional intelligence, leadership effectiveness, and job satisfaction are in a normal univariate distribution. The values of Kurtosis and Skewness are shown in Normality_table.
 ```{r}
+#use print(redundant_res) to find which columns need to be delated 
+rows_remove <- c(4, 14, 16, 32)
+clean_data <- data[-rows_remove, ]
+
+clean_data[, 7:49] <- data.frame(lapply(clean_data[, 7:49], as.numeric))
+
+# Now calculate the means and add them as new columns using mutate
+clean_data <- clean_data %>%
+  mutate(
+    EI_Mean = round (rowMeans(select(clean_data, 7:22), na.rm = TRUE), 3),
+    LE_Mean = round (rowMeans(select(clean_data, 23:31), na.rm = TRUE), 3),
+    JS_Mean = round (rowMeans(select(clean_data, 32:49), na.rm = TRUE), 3))
+
+library(e1071)
+Kurtosis_value <- round (sapply(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], kurtosis, na.rm = TRUE),3)
+Skewness_value <- round (sapply(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], skewness, na.rm = TRUE), 3)
+
+library(knitr)
+Normality_table <- data.frame(
+  Measure = c("EI_Mean", "LE_Mean", "JS_Mean"),
+  Kurtosis = Kurtosis_value,
+  Skewness = Skewness_value )
+kable(Normality_table, caption = "Normality")
 
 ```
 
