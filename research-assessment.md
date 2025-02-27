@@ -28,7 +28,7 @@ CNetID:12435011
 
 Section:2
 
-Research project title: R Project (final research)
+Research project title: Leader's Emotional Intelligence and Job Satisfaction: The Mediating Effect of Leadership Effectiveness
 
 Submission date: Feb.26
 
