@@ -250,7 +250,7 @@ SE_a <- summary(IV_on_Mediator)$coefficients[2, 2]
 SE_b <- summary(Mediator_on_DV)$coefficients[2, 2]
 sobel_test <- (a * b) / sqrt(b^2 * SE_a^2 + a^2 * SE_b^2)
 z <- round(sobel_test,3)
-print(z)
+cat("Sobel test: ", z, "\n")
 ```
 
 # Discussion
