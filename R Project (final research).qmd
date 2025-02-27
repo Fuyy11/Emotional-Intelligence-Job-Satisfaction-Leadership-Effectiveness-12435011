@@ -98,7 +98,11 @@ Leadership Effectiveness is one of the important elements in evaluating leadersh
 
 # Method
 
-The current study is a cross-sectional study aiming to investigate the relationship between leaders’ emotional intelligence and employee job satisfaction, determining the mediating effects of leadership effectiveness on them. The reasons for conducting a cross-sectional survey are its advantages, including flexibility, time-saving, and lower costs @Connelly2016, which could help to collect data efficiently within months. In addition, the study aims to discover variables in a single period of time, and a cross-sectional study is suitable for this purpose. \## Participants A sample of 232 respondents participated in the research, including interns and official employees from several industries, including education, Manufacturing, Construction, the Internet, Electric gas, and many other sectors working in China. In addition, the present study chose a non-probability form of sampling: a convenience sampling technique characterized by economy, convenience, and simpleness @Stratton2021. Moreover, among the participants, 57.6% were female, and only one person preferred not to tell; 34.9% were interns, 21.4% were from the education industry, and all participants were over 18.
+The current study is a cross-sectional study aiming to investigate the relationship between leaders’ emotional intelligence and employee job satisfaction, determining the mediating effects of leadership effectiveness on them. The reasons for conducting a cross-sectional survey are its advantages, including flexibility, time-saving, and lower costs @Connelly2016, which could help to collect data efficiently within months. In addition, the study aims to discover variables in a single period of time, and a cross-sectional study is suitable for this purpose.
+
+## Participants
+
+A sample of 232 respondents participated in the research, including interns and official employees from several industries, including education, Manufacturing, Construction, the Internet, Electric gas, and many other sectors working in China. In addition, the present study chose a non-probability form of sampling: a convenience sampling technique characterized by economy, convenience, and simpleness @Stratton2021. Moreover, among the participants, 57.6% were female, and only one person preferred not to tell; 34.9% were interns, 21.4% were from the education industry, and all participants were over 18.
 
 ## Measures
 
@@ -213,24 +217,40 @@ print(Reliability_table)
 
 H1: Leaders’ emotional intelligence will predict employee job satisfaction.
 
-Results (shown in Table 2) discovered that a leader’s emotional intelligence was a significant predictor of job satisfaction (β=0.826; SE = 0.035; p \<.001). This indicates that higher leaders’ emotional intelligence can be considered a predictor of higher employee job satisfaction. In other words, employees working on a team with leaders with high emotional intelligence tend to report high job satisfaction.
+Results discovered that a leader’s emotional intelligence was a significant predictor of job satisfaction (β=0.765; SE = 0.036; p <.001). This indicates that higher leaders’ emotional intelligence can be considered a predictor of higher employee job satisfaction. In other words, employees working on a team with leaders with high emotional intelligence tend to report high job satisfaction.
 
 H2: Leaders’ emotional intelligence will predict Leadership effectiveness.
 
-Results (shown in Table 2) found that leaders’ emotional intelligence was a significant predictor of leadership effectiveness (β = 0.875; SE = 0.032; p \< .001). It means that groups or teams with leaders who have high emotional intelligence can predict the emergence of leadership effectiveness. In other words, leaders with higher emotional intelligence and higher leadership effectiveness may emerge.
+Results found that leaders’ emotional intelligence was a significant predictor of leadership effectiveness (β = 0.873; SE = 0.032; p < .001). It means that groups or teams with leaders who have high emotional intelligence can predict the emergence of leadership effectiveness. In other words, leaders with higher emotional intelligence and higher leadership effectiveness may emerge.
 
 H3：Leadership effectiveness will predict employee job satisfaction.
 
-Results (shown in Table 2) indicated that leadership effectiveness emerged as a significant predictor of employee job satisfaction (β=0.810, SE = 0.036; p \< .001). It implies that leadership effectiveness can positively influence employee job satisfaction. In other words, employees working in an environment that embraces good leadership effectiveness tend to be satisfied with their jobs.
+Results indicated that leadership effectiveness emerged as a significant predictor of employee job satisfaction (β=0.756, SE = 0.036; p < .001). It implies that leadership effectiveness can positively influence employee job satisfaction. In other words, employees working in an environment that embraces good leadership effectiveness tend to be satisfied with their jobs.
 
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 
-To determine whether there is a mediation effect of leadership effectiveness between leaders’ emotional intelligence and employee job satisfaction, the method proposed by @Baron1986was taken. To be concise, the simple regression analysis was run separately with IV (leaders’ emotional intelligence) predicting mediator (leadership effectiveness) and DV (job satisfaction), and mediator predicting DV. Then, a multiple regression analysis was conducted with all variables, including IV, mediator, and DV. The connection between the predictor and dependent variable weakens when the intervening variable is controlled.
+To determine whether there is a mediation effect of leadership effectiveness between leaders’ emotional intelligence and employee job satisfaction, the method proposed by @Baron1986 was taken. To be concise, the simple regression analysis was run separately with IV (leaders’ emotional intelligence) predicting mediator (leadership effectiveness) and DV (job satisfaction), and mediator predicting DV. Then, a multiple regression analysis was conducted with all variables, including IV, mediator, and DV. The connection between the predictor and dependent variable weakens when the intervening variable is controlled.
 
-The analysis indicated that when leadership effectiveness was entered into the equation, the decrease in the direct path between emotional intelligence and job satisfaction was statistically significant (Z= 16.503, p \<.001). It implies that leadership effectiveness partially mediates the relationships between leaders’ emotional intelligence and leadership effectiveness. In other words, leadership effectiveness can strengthen the mechanism of leaders’ emotional intelligence effects on job satisfaction.
+The analysis indicated that when leadership effectiveness was entered into the equation, the decrease in the direct path between emotional intelligence and job satisfaction was statistically significant (Z= 16.443, p <.001). It implies that leadership effectiveness partially mediates the relationships between leaders’ emotional intelligence and leadership effectiveness. In other words, leadership effectiveness can strengthen the mechanism of leaders’ emotional intelligence effects on job satisfaction.
 
 ```{r}
+IV_on_Mediator <- lm(LE_Mean ~ EI_Mean, data = clean_data)
+summary(IV_on_Mediator)
+Mediator_on_DV <- lm(JS_Mean ~ LE_Mean, data = clean_data)
+summary(Mediator_on_DV)
+IV_on_DV<- lm(JS_Mean ~ EI_Mean, data = clean_data)
+summary(IV_on_DV)
+Total_Effect<- lm(JS_Mean ~ EI_Mean + LE_Mean, data = clean_data)
+summary(Total_Effect)
 
+a <- coef(IV_on_Mediator)[2]  
+b <- coef(Mediator_on_DV)[2]
+
+SE_a <- summary(IV_on_Mediator)$coefficients[2, 2]  
+SE_b <- summary(Mediator_on_DV)$coefficients[2, 2]
+sobel_test <- (a * b) / sqrt(b^2 * SE_a^2 + a^2 * SE_b^2)
+z <- round(sobel_test,3)
+print(z)
 ```
 
 # Discussion
