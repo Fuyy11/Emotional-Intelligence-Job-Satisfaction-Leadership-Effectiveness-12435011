@@ -217,21 +217,21 @@ print(Reliability_table)
 
 H1: Leaders’ emotional intelligence will predict employee job satisfaction.
 
-Results discovered that a leader’s emotional intelligence was a significant predictor of job satisfaction (β=0.765; SE = 0.036; p <.001). This indicates that higher leaders’ emotional intelligence can be considered a predictor of higher employee job satisfaction. In other words, employees working on a team with leaders with high emotional intelligence tend to report high job satisfaction.
+Results discovered that a leader’s emotional intelligence was a significant predictor of job satisfaction (β=0.765; SE = 0.036; p \<.001). This indicates that higher leaders’ emotional intelligence can be considered a predictor of higher employee job satisfaction. In other words, employees working on a team with leaders with high emotional intelligence tend to report high job satisfaction.
 
 H2: Leaders’ emotional intelligence will predict Leadership effectiveness.
 
-Results found that leaders’ emotional intelligence was a significant predictor of leadership effectiveness (β = 0.873; SE = 0.032; p < .001). It means that groups or teams with leaders who have high emotional intelligence can predict the emergence of leadership effectiveness. In other words, leaders with higher emotional intelligence and higher leadership effectiveness may emerge.
+Results found that leaders’ emotional intelligence was a significant predictor of leadership effectiveness (β = 0.873; SE = 0.032; p \< .001). It means that groups or teams with leaders who have high emotional intelligence can predict the emergence of leadership effectiveness. In other words, leaders with higher emotional intelligence and higher leadership effectiveness may emerge.
 
 H3：Leadership effectiveness will predict employee job satisfaction.
 
-Results indicated that leadership effectiveness emerged as a significant predictor of employee job satisfaction (β=0.756, SE = 0.036; p < .001). It implies that leadership effectiveness can positively influence employee job satisfaction. In other words, employees working in an environment that embraces good leadership effectiveness tend to be satisfied with their jobs.
+Results indicated that leadership effectiveness emerged as a significant predictor of employee job satisfaction (β=0.756, SE = 0.036; p \< .001). It implies that leadership effectiveness can positively influence employee job satisfaction. In other words, employees working in an environment that embraces good leadership effectiveness tend to be satisfied with their jobs.
 
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 
 To determine whether there is a mediation effect of leadership effectiveness between leaders’ emotional intelligence and employee job satisfaction, the method proposed by @Baron1986 was taken. To be concise, the simple regression analysis was run separately with IV (leaders’ emotional intelligence) predicting mediator (leadership effectiveness) and DV (job satisfaction), and mediator predicting DV. Then, a multiple regression analysis was conducted with all variables, including IV, mediator, and DV. The connection between the predictor and dependent variable weakens when the intervening variable is controlled.
 
-The analysis indicated that when leadership effectiveness was entered into the equation, the decrease in the direct path between emotional intelligence and job satisfaction was statistically significant (Z= 16.443, p <.001). It implies that leadership effectiveness partially mediates the relationships between leaders’ emotional intelligence and leadership effectiveness. In other words, leadership effectiveness can strengthen the mechanism of leaders’ emotional intelligence effects on job satisfaction.
+The analysis indicated that when leadership effectiveness was entered into the equation, the decrease in the direct path between emotional intelligence and job satisfaction was statistically significant (Z= 16.443, p \<.001). It implies that leadership effectiveness partially mediates the relationships between leaders’ emotional intelligence and leadership effectiveness. In other words, leadership effectiveness can strengthen the mechanism of leaders’ emotional intelligence effects on job satisfaction.
 
 ```{r}
 IV_on_Mediator <- lm(LE_Mean ~ EI_Mean, data = clean_data)
