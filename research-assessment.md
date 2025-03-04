@@ -96,7 +96,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: Repo/file/folder names should be informative and relevant to content, not class context (e.g., nrdowling/infant-gesture not nrdowling/d2m-project; infant-gestures.qmd not d2m-final.qmd).
 
 2.  Maintain an informative and up-to-date README.md
 
@@ -116,7 +116,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: .gitignore should include (minimally) a localonly folder and pdf render files (e.g., the *_files folder, .ttt, .tex., .log, etc.), as well as comments describing the ignored items
 
 4.  effectively use version control
 
@@ -125,7 +125,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  Relies on document revisions rather than manually created new versions
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 ### R programming
@@ -141,7 +141,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: Use more than 1 function to install/require/load packages; functions that (may) install something on your reader’s machine should be commented out
 
 6.  Use arithmetic, comparison, and logical operators
 
@@ -151,7 +151,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: missing logical operators (e.g, &, |, !)
 
 7.  Parse and define functions and arguments
 
@@ -162,8 +162,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3.  Functions are well-documented with comments
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments:
+        -   [x] Objective met
+        -   Grader comments: 
 
 8.  Parse and write conditional statements and/or loops
 
@@ -184,7 +184,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3.  Uses only relative paths that run without error when repo is cloned
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 10. Use `dplyr` and `tidyr` functions to transform data
@@ -197,7 +197,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: I see dplyr::mutate (line 172) but no other dplyr or tidyr functions; no pipelines (should minimally apply a function to data then pipe that new data into a sectond function)
 
 11. Use `stringr` functions to work with string variables
 
@@ -279,7 +279,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     -   NOTE: This objective may be met with only numeric or non-numeric summaries if they are sufficiently complex (at Dr. Dowling's discretion)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 18. Perform simple hypothesis testing analyses for multiple data types
@@ -291,7 +291,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     -   NOTE: This objective may be met with only numeric or factor data analyses if they are sufficiently complex (at Dr. Dowling's discretion)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 19. Present and interpret statistics in manuscript narrative
@@ -306,7 +306,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: no inline R code; do not print analysis results as raw output (save to objects and/or print to formatted tables)
 
 ### BibTeX
 
@@ -320,7 +320,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: for standard in-text citation with the form (Author, Year), use `[@citationkey]` -- the brackets put the author in the parentheses rather than just the year; not all citations render (e.g. `Geher2017explained` renders as `(?)`)
 
 21. Render an APA7 references page from a .bib file
 
@@ -336,7 +336,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: 2 small things:
+            1.  Proof your bibliography, some things are rendering oddly (e.g., a year as "2005-07-01Z")
+            2.  Start the refs section on a new page by including \clearpage before # References
 
 ### Notebooks and code chunks
 
@@ -352,7 +354,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: chunks do not have labels; most do not have comments
 
 23. Use code chunks to set up a quarto document
 
@@ -366,7 +368,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: load all packages in setup chunk(s), not throughout the document; set preferences/options/defaults in at least 1 chunk
 
 24. Render publication-quality tables, figures, and images from code chunks
 
@@ -380,7 +382,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: I don't see any figures or tables
 
 25. Execute descriptive and inferential analyses in code chunks
 
@@ -396,7 +398,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: results are displayed as raw R output
 
 ### R Markdown and Quarto
 
@@ -405,7 +407,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1.  Includes all necessary metadata, output options, and formatting options necessary to render an APA styled document (or other specified style if appropriate for the project)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 27. Use quarto R Markdown to compose an academic manuscript
@@ -419,7 +421,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: I don't see markdown styled text or objects like lists or footnotes; your appendix would be a good place to implement these, since they are already more or less lists
 
 28. Use inline R variables to replace static text
 
@@ -439,7 +441,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: I don't see any inline R code
 
 30. Use `knitr` and quarto to produce an APA7 formatted 1-click PDF manuscript
 
@@ -453,7 +455,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: In APA7, level 1 headings are reserved for # Abstract, # Methods, # Results, # Discussion, # References, and # Appendix; properly formatted document should not include any raw code or output
 
 ## Reflection (Optional)
 
@@ -488,8 +490,8 @@ Alternatively/additionally in mind some of the suggested ways to earn engagement
 
 All final projects are graded by Dr. Dowling. You will see your grade on Canvas separated into two categories: objective points and engagement points.
 
--   **Objective points:** #/30
--   **Engagement points:** #/10
--   **Total points:** #/40
+-   **Objective points:** 6/30
+-   **Engagement points:** 3/10
+-   **Total points:** 9/40
 
-**Comments:**
+**Comments:** Nice start, Yangyang! Be sure that when you attempt an objective you've looked closely at what the expectations are. You can potentially get points without exactly meeting those expectations if you truly go above and beyond with that objective in another way, but you can't go wrong with being very particular about meeting what is outlined.
