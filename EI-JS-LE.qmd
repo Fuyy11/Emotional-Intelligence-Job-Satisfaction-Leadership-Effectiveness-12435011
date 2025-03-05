@@ -76,10 +76,6 @@ H3: Leadership effectiveness will predict employee job satisfaction.
 
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 ```{r}
-#| label: figure 1
-#| fig-cap: Hypotheses Framework
-#| fig-width: 5
-#| out-width: 60%
 #install.packages("knitr")
 library(knitr)
 knitr::include_graphics("hypothesis Framework.png")
