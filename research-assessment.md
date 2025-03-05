@@ -115,8 +115,12 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  .gitingore comprehensively excludes unnecessary, private, and very large files and are commented appropriately
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments: .gitignore should include (minimally) a localonly folder and pdf render files (e.g., the \*\_files folder, .ttt, .tex., .log, etc.), as well as comments describing the ignored items
+
+            NO IDEA ABOUT THIS(SKIP 3.5 14:20)
 
 4.  effectively use version control
 
@@ -140,8 +144,14 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  Uses more than one function to install/load/require packages (including those used in commented code)
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments: Use more than 1 function to install/require/load packages; functions that (may) install something on your reader’s machine should be commented out
+
+            (SKIP 3.5 14：22)
+
+            IS THAT MEANS I NEED TO COMMENT LIKE I'VE INSTALL BALABALA
 
 6.  Use arithmetic, comparison, and logical operators
 
@@ -338,7 +348,10 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [ ] Objective met
         -   Grader comments: 2 small things:
             1.  Proof your bibliography, some things are rendering oddly (e.g., a year as "2005-07-01Z")
+
             2.  Start the refs section on a new page by including \clearpage before \# References
+
+                (DONE 3.5 14:29)
 
 ### Notebooks and code chunks
 
