@@ -1,0 +1,11 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{Hypotheses Framework}
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{hypothesis Framework.png}
+
+}
+
+\end{figure*}

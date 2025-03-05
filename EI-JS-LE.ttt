@@ -1,0 +1,16 @@
+\begin{longtable}[]{@{}lr@{}}
+\caption{Response Metrics}\tabularnewline
+\toprule\noalign{}
+Metric & Value \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Metric & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Total Responses & 232.00 \\
+Redundant Responses & 4.00 \\
+Response Rate (\%) & 98.28 \\
+\end{longtable}

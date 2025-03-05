@@ -42,9 +42,13 @@ Filename of knitted .pdf: [EI-JS-LE](https://github.com/Fuyy11/Final-research-12
 
 ## AI Statement
 
-Describe whether and how you used AI/LLMs when completing this project: Code assistant like how to run the different tests; debugging
+Describe whether and how you used AI/LLMs when completing this project:
 
-Optionally (for engagement points) reflect on your use of AI: AI really help me to search the information about the analysis equation. And it can also help quickly address the problems i made. And at the beginning of this project, i don't know how to quickly convert my zotero library into bibliography.bib, AI taught me how to do that.
+ChatGPT was used to help to identify the reason why i encountered errors and unexpected output. For example, I had trouble inserting pictures. ChatGPT provided guidance on how to texts and how to fix the table output.
+
+Optionally (for engagement points) reflect on your use of AI:
+
+AI really help me to search the information about the analysis equation. And it can also help quickly address the problems i made. And at the beginning of this project, i don't know how to quickly convert my zotero library into bibliography.bib, AI taught me how to do that.
 
 ## Overall requirements
 

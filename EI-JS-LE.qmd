@@ -42,6 +42,8 @@ format:
   apaquarto-html: default
   apaquarto-pdf:
     documentmode: man
+    fig_caption: true
+    latex_engine: xelatex
 ---
 
 # Introduction
@@ -74,6 +76,10 @@ H3: Leadership effectiveness will predict employee job satisfaction.
 
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 ```{r}
+#| label: figure 1
+#| fig-cap: Hypotheses Framework
+#| fig-width: 5
+#| out-width: 60%
 #install.packages("knitr")
 library(knitr)
 knitr::include_graphics("hypothesis Framework.png")
@@ -140,7 +146,9 @@ The data collection was conducted during the 2024 spring semester, lasting for t
 
 The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, three respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was 98.28%.
 
-```{r}
+```{r, message = FALSE, warning=FALSE}
+#install.packages("tinytex")
+#tinytex::install_tinytex()
 library(dplyr)
 library(knitr)
 data <- read.csv("data.csv")
@@ -157,7 +165,7 @@ response_rate <- (total_res - num_redundant) / total_res * 100
 Response_table <- data.frame(
   Metric = c("Total Responses", "Redundant Responses", "Response Rate (%)"),
   Value = c(total_res, num_redundant, round(response_rate, 2)))
-print(Response_table) # tried to use knitr, but don't no why there is no table in pdf
+knitr::kable(Response_table, caption = "Response Metrics") #can be seen in html but not pdf
 ```
 
 ## Missing Data
