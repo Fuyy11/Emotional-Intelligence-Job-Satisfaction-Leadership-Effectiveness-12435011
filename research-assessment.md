@@ -34,11 +34,11 @@ Submission date: Feb.26
 
 Submission number (1-4): 1
 
-Project GitHub repository URL: <https://github.com/Fuyy11/Final-research-12435011>
+Project GitHub repository URL: <https://github.com/Fuyy11/Emotional-Intelligence-Job-Satisfaction-Leadership-Effectiveness-12435011>
 
-Filename of manuscript .qmd: [R Project (final research).qmd](https://github.com/Fuyy11/Final-research-12435011/blob/master/R%20Project%20(final%20research).qmd "R Project (final research).qmd")
+Filename of manuscript .qmd: [EI-JS-LE.qmd](https://github.com/Fuyy11/Final-research-12435011/blob/master/R%20Project%20(final%20research).qmd "R Project (final research).qmd")
 
-Filename of knitted .pdf: [R-Project--final-research-.pdf](https://github.com/Fuyy11/Final-research-12435011/blob/master/R-Project--final-research-.pdf "R-Project--final-research-.pdf")
+Filename of knitted .pdf: [EI-JS-LE](https://github.com/Fuyy11/Final-research-12435011/blob/master/R%20Project%20(final%20research).qmd "R Project (final research).qmd")[.pdf](https://github.com/Fuyy11/Final-research-12435011/blob/master/R-Project--final-research-.pdf "R-Project--final-research-.pdf")
 
 ## AI Statement
 
@@ -96,7 +96,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments: Repo/file/folder names should be informative and relevant to content, not class context (e.g., nrdowling/infant-gesture not nrdowling/d2m-project; infant-gestures.qmd not d2m-final.qmd).
+        -   Grader comments: Repo/file/folder names should be informative and relevant to content, not class context (e.g., nrdowling/infant-gesture not nrdowling/d2m-project; infant-gestures.qmd not d2m-final.qmd). FIXED(REMEMBER TO DELATED!)
 
 2.  Maintain an informative and up-to-date README.md
 
@@ -104,9 +104,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     2.  Outlines the repo structure with file tree or similar
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: readme.md done 3.5/14:12
 
 3.  integrate a GitHub repo with an R studio project, including .gitignore file
 
@@ -116,7 +116,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments: .gitignore should include (minimally) a localonly folder and pdf render files (e.g., the *_files folder, .ttt, .tex., .log, etc.), as well as comments describing the ignored items
+        -   Grader comments: .gitignore should include (minimally) a localonly folder and pdf render files (e.g., the \*\_files folder, .ttt, .tex., .log, etc.), as well as comments describing the ignored items
 
 4.  effectively use version control
 
@@ -151,7 +151,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments: missing logical operators (e.g, &, |, !)
+        -   Grader comments: missing logical operators (e.g, &, \|, !)
 
 7.  Parse and define functions and arguments
 
@@ -163,7 +163,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [x] Objective met
-        -   Grader comments: 
+        -   Grader comments:
 
 8.  Parse and write conditional statements and/or loops
 
@@ -338,7 +338,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [ ] Objective met
         -   Grader comments: 2 small things:
             1.  Proof your bibliography, some things are rendering oddly (e.g., a year as "2005-07-01Z")
-            2.  Start the refs section on a new page by including \clearpage before # References
+            2.  Start the refs section on a new page by including \clearpage before \# References
 
 ### Notebooks and code chunks
 
@@ -455,7 +455,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments: In APA7, level 1 headings are reserved for # Abstract, # Methods, # Results, # Discussion, # References, and # Appendix; properly formatted document should not include any raw code or output
+        -   Grader comments: In APA7, level 1 headings are reserved for \# Abstract, \# Methods, \# Results, \# Discussion, \# References, and \# Appendix; properly formatted document should not include any raw code or output
 
 ## Reflection (Optional)
 

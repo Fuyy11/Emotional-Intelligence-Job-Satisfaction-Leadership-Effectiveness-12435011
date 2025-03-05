@@ -6,14 +6,11 @@
 
 ## Brief Description
 
-    This study examines the impact of leaders' emotional intelligence on employee\
-job satisfaction, with leadership effectiveness as a mediating factor.\
-Using a cross-sectional survey of 232 participants, the findings reveal that\
-leaders’ emotional intelligence positively influences both leadership\
-effectiveness and job satisfaction. Additionally, leadership effectiveness\
-partially mediates this relationship. These insights highlight the importance\
-of emotional intelligence in leadership for improving job satisfaction and\
-organizational effectiveness.
+    This study explores the impact of leaders’ emotional intelligence on  
+employee job satisfaction, with leadership effectiveness as a mediating factor.  
+Using a cross-sectional survey of 232 participants, the research highlights the  
+role of emotional intelligence in enhancing leadership effectiveness and job  
+satisfaction, emphasizing its importance for organizational success.
 
 ## Research Design
 
