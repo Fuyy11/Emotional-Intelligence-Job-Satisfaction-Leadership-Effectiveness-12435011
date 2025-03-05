@@ -342,7 +342,7 @@ I have read and understood the information provided and have had the opportunity
 
 ## Questionnaire
 
-- 1=Strongly Disagree 2=Disagree 3=Netural 4=Agree 5=Strongly Agree, higher the score means higher Leaders’ Emotional Intelligence/Leaders’ Effectiveness/Job Satisfaction
+- *1=Strongly Disagree 2=Disagree 3=Netural 4=Agree 5=Strongly Agree, higher the score means higher Leaders’ Emotional Intelligence/Leaders’ Effectiveness/Job Satisfaction*
 
 ### Leaders’ Emotional Intelligence 
 
