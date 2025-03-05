@@ -19,7 +19,7 @@ organizational effectiveness.
 
 ### Research Question
 
-Are there any mediating effects of leadership effectiveness between leaders’\
+    Are there any mediating effects of leadership effectiveness between leaders’\
 emotional intelligence and employee job satisfaction?
 
 ### Hypotheses
@@ -52,7 +52,7 @@ emotional intelligence and employee job satisfaction?
 
 ### Findings
 
-The findings declared that leaders’ emotional intelligence could predict\
+    The findings declared that leaders’ emotional intelligence could predict\
 leadership effectiveness and employee job satisfaction, and leadership\
 effectiveness could also predict job satisfaction. Moreover, leadership\
 effectiveness partially mediated the mechanism of leaders’ emotional\
@@ -60,7 +60,35 @@ intelligence to employee job satisfaction.
 
 ## Significance
 
-This research gives some insights into the importance of leaders’ emotional\
+    This research gives some insights into the importance of leaders’ emotional\
 intelligence within an organization or a team. It may help organizations or\
 teams to improve employee job satisfaction and enhance efficiency and\
 effectiveness.
+
+### Repository Structure
+
+This repository contains the following directories and files:
+
+```plaintext
+Leader-Emotional-Intelligence-Job-Satisfaction/
+│
+├── data/
+│   ├── data.csv              # Raw survey data file
+│   └── cleaned_data.csv      # Cleaned survey data
+│
+├── docs/
+│   ├── EI-JS-LE.pdf          # Final research paper in PDF format
+│   ├── EI-JS-LE.html         # HTML version of the research paper
+│   └── EI-JS-LE.docx         # Word version of the research paper
+│
+├── references/
+│   └── bibliography.bib      # BibTeX bibliography file
+│
+├── src/
+│   ├── analysis.R            # R script for data analysis
+│   ├── data_processing.R     # R script for cleaning and preprocessing data
+│   └── visualization.R       # R script for visualizing results
+│
+├── .rdata                    # R data file (contains workspace data, models, etc.)
+├── README.md                 # Project description and instructions
+└── .gitignore                # Git ignore file to exclude unnecessary files
