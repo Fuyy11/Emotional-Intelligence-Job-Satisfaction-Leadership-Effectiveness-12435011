@@ -110,17 +110,17 @@ Factors that influence leadership effectiveness also include communication compe
 
 # Method
 
-The current study is a cross-sectional study aiming to investigate the relationship between leaders’ emotional intelligence and employee job satisfaction, determining the mediating effects of leadership effectiveness on them. The reasons for conducting a cross-sectional survey are its advantages, including flexibility, time-saving, and lower costs @Connelly2016, which could help to collect data efficiently within months. In addition, the study aims to discover variables in a single period of time, and a cross-sectional study is suitable for this purpose.
+The current study is a cross-sectional study aiming to investigate the relationship between leaders’ emotional intelligence and employee job satisfaction, determining the mediating effects of leadership effectiveness on them. The reasons for conducting a cross-sectional survey are its advantages, including flexibility, time-saving, and lower costs [@Connelly2016], which could help to collect data efficiently within months. In addition, the study aims to discover variables in a single period of time, and a cross-sectional study is suitable for this purpose.
 
 ## Participants
 
-A sample of 232 respondents participated in the research, including interns and official employees from several industries, including education, Manufacturing, Construction, the Internet, Electric gas, and many other sectors working in China. In addition, the present study chose a non-probability form of sampling: a convenience sampling technique characterized by economy, convenience, and simpleness @Stratton2021. Moreover, among the participants, 57.6% were female, and only one person preferred not to tell; 34.9% were interns, 21.4% were from the education industry, and all participants were over 18.
+A sample of 232 respondents participated in the research, including interns and official employees from several industries, including education, Manufacturing, Construction, the Internet, Electric gas, and many other sectors working in China. In addition, the present study chose a non-probability form of sampling: a convenience sampling technique characterized by economy, convenience, and simpleness [@Stratton2021]. Moreover, among the participants, 57.6% were female, and only one person preferred not to tell; 34.9% were interns, 21.4% were from the education industry, and all participants were over 18.
 
-## Measures
+## Instruments
 
 ### Leaders’ Emotional Intelligence Scale
 
-@Hu2023 claimed that leaders’ EI could be measured from emotional appraisal of self and others, use of emotion, and emotional regulation. This scale contained 16 items and four items for each aspect. The Cronbach’s alpha was 0.924, greater than 0.3, which indicated that the scale could give consistent results @Hu2023. A 5-point Likert scale ranging from strongly disagree, disagree, neutral, agree, to strongly agree was used as a tool. Here are some examples: “My leader has a good sense of why he has certain feelings most of the time.” “My leader always knows his friends’ emotions from their behavior.” “My leader always sets goals for himself and then tries his best to achieve them.” “My leader is able to control his temper and handle difficulties rationally.”
+@Hu2023 claimed that leaders’ EI could be measured from emotional appraisal of self and others, use of emotion, and emotional regulation. This scale contained 16 items and four items for each aspect. The Cronbach’s alpha was 0.924, greater than 0.3, which indicated that the scale could give consistent results [@Hu2023]. A 5-point Likert scale ranging from strongly disagree, disagree, neutral, agree, to strongly agree was used as a tool. Here are some examples: “My leader has a good sense of why he has certain feelings most of the time.” “My leader always knows his friends’ emotions from their behavior.” “My leader always sets goals for himself and then tries his best to achieve them.” “My leader is able to control his temper and handle difficulties rationally.”
 
 ### Leadership Effectiveness Scale
 
@@ -128,7 +128,7 @@ The research measured leadership effectiveness through the scale from @Kerr2006,
 
 ### Job Satisfaction Scale
 
-Employees’ job satisfaction would be measured by the 5-point Likert job satisfaction scale developed by @Brayfield1951. The reliability coefficient was 0.77, “which was corrected by the Spearman-Brown formula to 0.87” @Brayfield1951,p.310. To keep a consistent result, answers to some questions would be reversed in the data analysis process. Here are some examples, “My job is like a hobby to me.” “I am often bored with my job.” “I am satisfied with my job for the time being.”
+Employees’ job satisfaction would be measured by the 5-point Likert job satisfaction scale developed by @Brayfield1951. The reliability coefficient was 0.77, “which was corrected by the Spearman-Brown formula to 0.87” [@Brayfield1951,p.310]. To keep a consistent result, answers to some questions would be reversed in the data analysis process. Here are some examples, “My job is like a hobby to me.” “I am often bored with my job.” “I am satisfied with my job for the time being.”
 
 ## Procedure
 
