@@ -65,30 +65,8 @@ intelligence within an organization or a team. It may help organizations or\
 teams to improve employee job satisfaction and enhance efficiency and\
 effectiveness.
 
-### Repository Structure
+# Repository Structure
 
 This repository contains the following directories and files:
 
-```plaintext
-Leader-Emotional-Intelligence-Job-Satisfaction/
-│
-├── data/
-│   ├── data.csv              # Raw survey data file
-│   └── cleaned_data.csv      # Cleaned survey data
-│
-├── docs/
-│   ├── EI-JS-LE.pdf          # Final research paper in PDF format
-│   ├── EI-JS-LE.html         # HTML version of the research paper
-│   └── EI-JS-LE.docx         # Word version of the research paper
-│
-├── references/
-│   └── bibliography.bib      # BibTeX bibliography file
-│
-├── src/
-│   ├── analysis.R            # R script for data analysis
-│   ├── data_processing.R     # R script for cleaning and preprocessing data
-│   └── visualization.R       # R script for visualizing results
-│
-├── .rdata                    # R data file (contains workspace data, models, etc.)
-├── README.md                 # Project description and instructions
-└── .gitignore                # Git ignore file to exclude unnecessary files
+\`\`\`plaintext Leader-Emotional-Intelligence-Job-Satisfaction/ │ ├── data/ │ ├── data.csv \# Raw survey data file │ └── cleaned_data.csv \# Cleaned survey data │ ├── docs/ │ ├── EI-JS-LE.pdf \# Final research paper in PDF format │ ├── EI-JS-LE.html \# HTML version of the research paper │ └── EI-JS-LE.docx \# Word version of the research paper │ ├── references/ │ └── bibliography.bib \# BibTeX bibliography file │ ├── src/ │ ├── analysis.R \# R script for data analysis │ ├── data_processing.R \# R script for cleaning and preprocessing data │ └── visualization.R \# R script for visualizing results │ ├── .rdata \# R data file (contains workspace data, models, etc.) ├── README.md \# Project description and instructions └── .gitignore \# Git ignore file to exclude unnecessary files
