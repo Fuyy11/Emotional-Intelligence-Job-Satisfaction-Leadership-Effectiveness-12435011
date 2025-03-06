@@ -137,9 +137,41 @@ The data collection was conducted during the 2024 spring semester, lasting for t
 
 # Data analysis and results
 
+## Missing Data
+```{r}
+data <- read.csv("data.csv")
+# Count missing data in the dataset
+total_missing <- sum(is.na(data))
+#install.packages("stringr")
+library(stringr)
+# Generate message about missing data
+missing_message <- if (!total_missing) {
+  str_glue("no missing data was found.")
+} else {
+  str_glue(" there are totally {total_missing} missing data.")
+}
+```
+@Emmanuel2021 claimed that missing data problems could lead to performance degradation, biased data analysis, and outcomes. After checking the data,`r missing_message`
+
+## Outliers
+
+```{r}
+df_content <- data[, 7:49]  # Select Likert-scale response columns
+
+# Identify redundant responses
+redundant_res <- data[apply(df_content, 1, function(x) length(unique(x)) == 1), ] 
+num_redundant <- nrow(redundant_res)
+outlier_message <- if (!num_redundant) {
+  str_glue("Zero")
+} else {
+  str_glue("{num_redundant}")
+}
+```
+A univariate outlier analysis was used in the present study. According to @Mowbray2019, univariate outliers are extreme values different from domain cases. Range function was used to identify errors in data entry. `r outlier_message` responses were found invalid because the same answers were used for all rating scales, which were deleted before conducting data analysis.
+
 ## Response Rate
 
-The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, three respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was 98.28%.
+The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, four respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was 98.28%.
 
 
 ```{r, message = FALSE, warning=FALSE}
@@ -206,24 +238,9 @@ knitr::include_graphics("response_table.png")
 cat("\\vspace{10mm}") #Add 10mm space below
 ```
 
-## Missing Data
-```{r}
-# Count missing data in the dataset
-total_missing <- sum(is.na(data))
-#install.packages("stringr")
-library(stringr)
-# Generate message about missing data
-missing_message <- if (!total_missing) {
-  str_glue("no missing data was found.")
-} else {
-  str_glue(" there are totally {total_missing} missing data.")
-}
-```
-@Emmanuel2021 claimed that missing data problems could lead to performance degradation, biased data analysis, and outcomes. After checking the data,`r missing_message`
 
-## Outliers
 
-A univariate outlier analysis was used in the present study. According to @Mowbray2019, univariate outliers are extreme values different from domain cases. Range function was used to identify errors in data entry. Four responses were found invalid because the same answers were used for all rating scales, which were deleted before conducting data analysis.
+
 
 ## Normality
 
