@@ -315,43 +315,40 @@ According to @Marshall2010, descriptive statistics describe the characteristics 
 #| label: 8_correlation
 #| message: false
 #| warning: false
-#install.packages("reshape2")
+#install.packages("ggpmisc")
 library(ggplot2)
-library(reshape2)
+library(ggpmisc)
 
-# correlation matrix
-cor_matrix <- cor(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
+# Create a long format data frame for ggplot2
+long_data <- clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")]
+long_data <- reshape2::melt(long_data)
 
-# melt the correlation matrix for ggplot
-cor_matrix_melted <- melt(cor_matrix)
-
-# Create the heatmap
-ggplot(cor_matrix_melted, aes(Var1, Var2, fill = value)) +
-  geom_tile() +
-  geom_text(aes(label = round(value, 2)), color = "white") +
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, 
-                       limits = c(-1, 1), name = "Correlation") +
+# Create pairwise scatter plot with correlation coefficients
+ggplot(long_data, aes(x = value, y = variable)) +
+  geom_point(aes(color = variable), size = 2) +
+  stat_smooth(method = "lm", col = "red", se = FALSE) +
+  stat_cor(aes(label = ..r.label..), color = "black", size = 5) +
+  facet_wrap(~ variable, scales = "free") +
   theme_minimal() +
-  labs(title = "Correlation between EI, JS, and LE", x = "", y = "") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  labs(title = "Pairwise Scatter Plots with Correlation Coefficients", x = "Value", y = "Variable")
 ```
-
-
-
 
 ## Reliability checks of scale
 ```{r}
 #| label: 9_reliability
 library(psych)
+# Calculate Cronbach's alpha for each scale
 EI_Cronbach <- alpha(clean_data[, 7:22])$total$raw_alpha
 LE_Cronbach <- alpha(clean_data[, 23:31])$total$raw_alpha
 JS_Cronbach <- alpha(clean_data[, 32:49])$total$raw_alpha
 
+# Create a reliability table with rounded values
 Reliability_table <- data.frame(
   EI_Cronbach = round(EI_Cronbach, 3),
   LE_Cronbach = round(LE_Cronbach, 3),
   JS_Cronbach = round(JS_Cronbach, 3)
 )
+
 ```
 @Cortina1993 indicated that coefficient alpha is one of the most important and widely used statistics in different research fields to test scales’ reliability and internal consistency. According to @Ursachi2015, it’s commonly accepted by the general when Cronbach alpha ranges from 0.6 to 0.7 and when it comes to greater than 0.8, suggesting a good reliability and internal consistency. Reliability_table showed that the Cronbach alpha of the leaders’ emotional intelligence scale is `r round(EI_Cronbach, 3)`; for leadership effectiveness, it is `r round(LE_Cronbach, 3)`; and for job satisfaction, it is `r round(JS_Cronbach, 3)`. The coefficient alpha for the three scales is acceptable.
 
