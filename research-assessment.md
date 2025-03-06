@@ -157,6 +157,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
             IS THAT MEANS I NEED TO COMMENT LIKE I'VE INSTALL BALABALA
 
+            I've comment out the packages that I've installed
+
 6.  Use arithmetic, comparison, and logical operators
 
     1.  Uses all three types of operators
@@ -164,8 +166,14 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  Uses multiple operators in data transformation pipelines and/or inline R code
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments: missing logical operators (e.g, &, \|, !)
+
+            Done (3.6 11:50)
+
+            use logical operators (!) to check my missing data/outlier, also use a inline R code in missing data/outliers part
 
 7.  Parse and define functions and arguments
 
