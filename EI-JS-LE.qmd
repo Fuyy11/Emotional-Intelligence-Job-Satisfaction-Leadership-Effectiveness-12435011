@@ -143,12 +143,14 @@ The present study distributed questionnaires online, and 232 people responded. H
 
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: table-response-metrics
+#| label: table-response-rate
 #| echo: false
 #| results: asis
 #| message: false
 #| warning: false
 
+#install.packages("gt")
+#install.packages("webshot2")
 library(dplyr)
 library(knitr)
 library(gt)
@@ -205,8 +207,19 @@ cat("\\vspace{10mm}") #Add 10mm space below
 ```
 
 ## Missing Data
-
-@Emmanuel2021 claimed that missing data problems could lead to performance degradation, biased data analysis, and outcomes. After checking the data, no missing data was found.
+```{r}
+# Count missing data in the dataset
+total_missing <- sum(is.na(data))
+#install.packages("stringr")
+library(stringr)
+# Generate message about missing data
+missing_message <- if (!total_missing) {
+  str_glue("no missing data was found.")
+} else {
+  str_glue(" there are totally {total_missing} missing data.")
+}
+```
+@Emmanuel2021 claimed that missing data problems could lead to performance degradation, biased data analysis, and outcomes. After checking the data,`r missing_message`
 
 ## Outliers
 
@@ -216,7 +229,7 @@ A univariate outlier analysis was used in the present study. According to @Mowbr
 
 In the current study, the Kurtosis and Skewness were conducted, revealing that for the variable of leaders’ emotional intelligence, the values of Kurtosis and Skewness were -1.109 and 0.164; for the variable of leadership effectiveness, the values of Kurtosis and Skewness were -0.957 and 0.102; for the variable of Employee Job Satisfaction, the values of Kurtosis and Skewness were -0.479 and 0.649. @George2010 indicated that the values for skewness and kurtosis of variables are suitable when ranging from -2 to +2. Therefore, the values prove that leaders’ emotional intelligence, leadership effectiveness, and job satisfaction are in a normal univariate distribution. The values of Kurtosis and Skewness are shown in Normality_table.
 
-```{r}
+```{r, message = FALSE, warning=FALSE}
 #use print(redundant_res) to find which columns need to be delated 
 rows_remove <- c(4, 14, 16, 32)
 clean_data <- data[-rows_remove, ]
