@@ -42,7 +42,6 @@ format:
   apaquarto-html: default
   apaquarto-pdf:
     documentmode: man
-    fig_caption: true
     latex_engine: xelatex
 ---
 
@@ -142,26 +141,67 @@ The data collection was conducted during the 2024 spring semester, lasting for t
 
 The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, three respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was 98.28%.
 
+
 ```{r, message = FALSE, warning=FALSE}
-#install.packages("tinytex")
-#tinytex::install_tinytex()
+#| label: table-response-metrics
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+
 library(dplyr)
 library(knitr)
+library(gt)
+library(webshot2)
+
+# Data processing
 data <- read.csv("data.csv")
 
 total_res <- nrow(data)
-df_content <- data[, 7:49] # select Likert-scale response columns
+df_content <- data[, 7:49]  # Select Likert-scale response columns
 
-redundant_res <- data[apply(df_content, 1, function(x) 
-  length(unique(x)) == 1), ] # find whose response are all same at each question
+# Identify redundant responses
+redundant_res <- data[apply(df_content, 1, function(x) length(unique(x)) == 1), ] 
 num_redundant <- nrow(redundant_res)
 
 response_rate <- (total_res - num_redundant) / total_res * 100 
 
+# Create the Response_table (missing in your original code)
 Response_table <- data.frame(
   Metric = c("Total Responses", "Redundant Responses", "Response Rate (%)"),
-  Value = c(total_res, num_redundant, round(response_rate, 2)))
-knitr::kable(Response_table, caption = "Response Metrics") #can be seen in html but not pdf
+  Value = c(total_res, num_redundant, round(response_rate, 2))
+)
+
+# Format table using gt
+table_gt <- Response_table %>%
+  gt() %>%
+  tab_header(
+    title = md("**Response Rate**")
+  ) %>%
+  fmt_number(
+    columns = Value,
+    decimals = 2
+  ) %>%
+  cols_label(
+    Metric = md("**Metric**"),
+    Value = md("**Value**")
+  ) %>%
+  tab_options(
+    table.width = px(800),  
+    table.font.size = px(20),
+    column_labels.font.weight = "bold",
+    table.align = "center",
+    heading.title.font.size = 20,
+    table.font.names = "Times New Roman"
+  )
+
+# Save the table as an PNG
+gtsave(table_gt, "response_table.png", expand = 20, vwidth = 1000, vheight = 600)
+
+# insert the image 
+cat("\\vspace{10mm}") # Add 10mm space above
+knitr::include_graphics("response_table.png")
+cat("\\vspace{10mm}") #Add 10mm space below
 ```
 
 ## Missing Data
