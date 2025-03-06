@@ -193,9 +193,13 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     2.  Uses multiple types of conditional/loop functions (e.g., `if_else()`, `case_when()`, `for`, `while`)
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments:
+
+            if_else() was used in missing data and outliers
 
 9.  Use `readr` functions to read in and write out data
 
@@ -227,9 +231,13 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     2.  Uses `stringr` functions in a data transformation pipeline
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments:
+
+            stringr function was used in missing data and outliers
 
 12. Use `forcats` functions to work with factor variables
 
@@ -327,8 +335,12 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4.  Uses dynamic inline R code to render data-dependent text
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments: no inline R code; do not print analysis results as raw output (save to objects and/or print to formatted tables)
+
+            two inline R code was used in missing data and outliers
 
 ### BibTeX
 
@@ -341,8 +353,12 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3.  May use `cite_r()` to cite R and R packages
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
+
         -   Grader comments: for standard in-text citation with the form (Author, Year), use `[@citationkey]` -- the brackets put the author in the parentheses rather than just the year; not all citations render (e.g. `Geher2017explained` renders as `(?)`)
+
+            fixed
 
 21. Render an APA7 references page from a .bib file
 

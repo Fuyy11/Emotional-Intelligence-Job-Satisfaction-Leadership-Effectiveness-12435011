@@ -75,6 +75,7 @@ H3: Leadership effectiveness will predict employee job satisfaction.
 
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 ```{r}
+#| label: 1_framework
 #install.packages("knitr")
 library(knitr)
 knitr::include_graphics("hypothesis Framework.png")
@@ -139,6 +140,7 @@ The data collection was conducted during the 2024 spring semester, lasting for t
 
 ## Missing Data
 ```{r}
+#| label: 2_missing_data
 data <- read.csv("data.csv")
 # Count missing data in the dataset
 total_missing <- sum(is.na(data))
@@ -156,6 +158,7 @@ missing_message <- if (!total_missing) {
 ## Outliers
 
 ```{r}
+#| label: 3_outliers
 df_content <- data[, 7:49]  # Select Likert-scale response columns
 
 # Identify redundant responses
@@ -170,12 +173,16 @@ outlier_message <- if (!num_redundant) {
 A univariate outlier analysis was used in the present study. According to @Mowbray2019, univariate outliers are extreme values different from domain cases. Range function was used to identify errors in data entry. `r outlier_message` responses were found invalid because the same answers were used for all rating scales, which were deleted before conducting data analysis.
 
 ## Response Rate
+```{r}
+#| label: 4_response_rate
+total_res <- nrow(data)
+response_rate <- (total_res - num_redundant) / total_res * 100 
+```
 
-The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, four respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was 98.28%.
-
+The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, four respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was `r sprintf("%.2f%%", response_rate)`.
 
 ```{r, message = FALSE, warning=FALSE}
-#| label: table-response-rate
+#| label: 5_table-response-rate
 #| echo: false
 #| results: asis
 #| message: false
@@ -188,9 +195,6 @@ library(knitr)
 library(gt)
 library(webshot2)
 
-total_res <- nrow(data)
-
-response_rate <- (total_res - num_redundant) / total_res * 100 
 
 # Create the Response_table (missing in your original code)
 Response_table <- data.frame(
@@ -204,10 +208,8 @@ table_gt <- Response_table %>%
   tab_header(
     title = md("**Response Rate**")
   ) %>%
-  fmt_number(
-    columns = Value,
-    decimals = 2
-  ) %>%
+  fmt_integer(columns = Value,rows = 1:2) %>%
+  fmt_number(columns = Value, rows = 3,decimals = 2) %>%
   cols_label(
     Metric = md("**Metric**"),
     Value = md("**Value**")
@@ -230,15 +232,23 @@ knitr::include_graphics("response_table.png")
 cat("\\vspace{10mm}") #Add 10mm space below
 ```
 
-
-
-
-
 ## Normality
 
-In the current study, the Kurtosis and Skewness were conducted, revealing that for the variable of leaders’ emotional intelligence, the values of Kurtosis and Skewness were -1.109 and 0.164; for the variable of leadership effectiveness, the values of Kurtosis and Skewness were -0.957 and 0.102; for the variable of Employee Job Satisfaction, the values of Kurtosis and Skewness were -0.479 and 0.649. @George2010 indicated that the values for skewness and kurtosis of variables are suitable when ranging from -2 to +2. Therefore, the values prove that leaders’ emotional intelligence, leadership effectiveness, and job satisfaction are in a normal univariate distribution. The values of Kurtosis and Skewness are shown in Normality_table.
+In the current study, the Kurtosis and Skewness were conducted, revealing that for the variable of leaders’ emotional intelligence, the values of Kurtosis and Skewness were -1.109 and 0.165; for the variable of leadership effectiveness, the values of Kurtosis and Skewness were -0.957 and 0.102; for the variable of Employee Job Satisfaction, the values of Kurtosis and Skewness were -0.479 and 0.649. @George2010 indicated that the values for skewness and kurtosis of variables are suitable when ranging from -2 to +2. Therefore, the values prove that leaders’ emotional intelligence, leadership effectiveness, and job satisfaction are in a normal univariate distribution. The values of Kurtosis and Skewness are shown in Normality Analysis table.
 
 ```{r, message = FALSE, warning=FALSE}
+#| label: 6_normality_output
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(gt)
+library(webshot2)
+library(e1071)
+library(knitr)
+
 #use print(redundant_res) to find which columns need to be delated 
 rows_remove <- c(4, 14, 16, 32)
 clean_data <- data[-rows_remove, ]
@@ -252,44 +262,98 @@ clean_data <- clean_data %>%
     LE_Mean = round (rowMeans(select(clean_data, 23:31), na.rm = TRUE), 3),
     JS_Mean = round (rowMeans(select(clean_data, 32:49), na.rm = TRUE), 3))
 
-library(e1071)
+
 Kurtosis_value <- round (sapply(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], kurtosis, na.rm = TRUE),3)
 Skewness_value <- round (sapply(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], skewness, na.rm = TRUE), 3)
 
-library(knitr)
 Normality_table <- data.frame(
   Measure = c("EI_Mean", "LE_Mean", "JS_Mean"),
   Kurtosis = Kurtosis_value,
   Skewness = Skewness_value )
-print(kable(Normality_table, caption = "Normality"))
+
+# Format table using gt
+normality_gt <- Normality_table %>%
+  gt() %>%
+  tab_header(
+    title = md("**Normality Analysis**")
+  ) %>%
+  cols_label(
+    Measure = md("**Measure**"),
+    Kurtosis = md("**Kurtosis**"),
+    Skewness = md("**Skewness**")
+  ) %>%
+  tab_options(
+    table.width = px(800),  
+    table.font.size = px(20),
+    column_labels.font.weight = "bold",
+    table.align = "center",
+    heading.title.font.size = 20,
+    table.font.names = "Times New Roman"
+  )
+
+# Save as a PNG
+gtsave(normality_gt, "normality_table.png", expand = 20, vwidth = 1000, vheight = 600)
+
+# Insert the image 
+cat("\\vspace{10mm}") # Add 10mm space above
+knitr::include_graphics("normality_table.png")
+cat("\\vspace{10mm}") #Add 10mm space below
 
 ```
-
 ## Descriptive statistics
-
-According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis. The descriptive statistics for the three variables in the present study are shown in Table 1. The mean for leaders’ emotional intelligence people rate was 3.18 (SD=0.85); the mean for leadership effectiveness was 3.17 (SD=0.85); and the mean for job satisfaction was 3.03 (SD=0.80).
-
 ```{r}
+#| label: 7_descriptive_statistics
+#| message: false
+#| warning: false
+#install.packages("psych")
 library(psych)
 Descriptive_st <- describe(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
-print(Descriptive_st)
 ```
-
-## Reliability checks of scale
-
-@Cortina1993 indicated that coefficient alpha is one of the most important and widely used statistics in different research fields to test scales’ reliability and internal consistency. According to @Ursachi2015, it’s commonly accepted by the general when Cronbach alpha ranges from 0.6 to 0.7 and when it comes to greater than 0.8, suggesting a good reliability and internal consistency. Reliability_table showed that the Cronbach alpha of the leaders’ emotional intelligence scale is 0.916; for leadership effectiveness, it is 0.844; and for job satisfaction, it is 0.903. The coefficient alpha for the three scales is acceptable.
+According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis.The mean for leaders’ emotional intelligence people rate was `r round(mean(clean_data$EI_Mean), 2)` (SD = `r round(sd(clean_data$EI_Mean), 2)`); the mean for leadership effectiveness was `r round(mean(clean_data$LE_Mean), 2)` (SD = `r round(sd(clean_data$LE_Mean), 2)`); and the mean for job satisfaction was `r round(mean(clean_data$JS_Mean), 2)` (SD = `r round(sd(clean_data$JS_Mean), 2)`).Additionally,Correlation between EI, JS, and LE table declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction.
 
 ```{r}
+#| label: 8_correlation
+#| message: false
+#| warning: false
+#install.packages("reshape2")
+library(ggplot2)
+library(reshape2)
+
+# correlation matrix
+cor_matrix <- cor(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
+
+# melt the correlation matrix for ggplot
+cor_matrix_melted <- melt(cor_matrix)
+
+# Create the heatmap
+ggplot(cor_matrix_melted, aes(Var1, Var2, fill = value)) +
+  geom_tile() +
+  geom_text(aes(label = round(value, 2)), color = "white") +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, 
+                       limits = c(-1, 1), name = "Correlation") +
+  theme_minimal() +
+  labs(title = "Correlation between EI, JS, and LE", x = "", y = "") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+
+
+## Reliability checks of scale
+```{r}
+#| label: 9_reliability
 library(psych)
 EI_Cronbach <- alpha(clean_data[, 7:22])$total$raw_alpha
 LE_Cronbach <- alpha(clean_data[, 23:31])$total$raw_alpha
 JS_Cronbach <- alpha(clean_data[, 32:49])$total$raw_alpha
 
 Reliability_table <- data.frame(
-  EI_Cronbach = round (EI_Cronbach,3),LE_Cronbach = round(LE_Cronbach, 3),
-  JS_Cronbach = round(JS_Cronbach,3))
-print(Reliability_table)
+  EI_Cronbach = round(EI_Cronbach, 3),
+  LE_Cronbach = round(LE_Cronbach, 3),
+  JS_Cronbach = round(JS_Cronbach, 3)
+)
 ```
+@Cortina1993 indicated that coefficient alpha is one of the most important and widely used statistics in different research fields to test scales’ reliability and internal consistency. According to @Ursachi2015, it’s commonly accepted by the general when Cronbach alpha ranges from 0.6 to 0.7 and when it comes to greater than 0.8, suggesting a good reliability and internal consistency. Reliability_table showed that the Cronbach alpha of the leaders’ emotional intelligence scale is `r round(EI_Cronbach, 3)`; for leadership effectiveness, it is `r round(LE_Cronbach, 3)`; and for job satisfaction, it is `r round(JS_Cronbach, 3)`. The coefficient alpha for the three scales is acceptable.
 
 ## Final analysis- Hypothesis Testing
 
