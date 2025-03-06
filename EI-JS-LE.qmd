@@ -126,7 +126,8 @@ A sample of 232 respondents participated in the research, including interns and 
 
 ### Leadership Effectiveness Scale
 
-The research measured leadership effectiveness through the scale from @Kerr2006, which a third party generated as a 10-point Likert scale. The present research modified it into a 5-point Likert scale for consistency with other scales. There was a total of 9 items. Here are some examples: “I feel at ease with my supervisor when asking questions” and “My supervisor asks me how I am doing on a regular basis.”
+The research measured leadership effectiveness through the scale from @Kerr2006, which a third party generated as a 10-point Likert scale. The present research modified it into a 5-point Likert scale for consistency with other scales. There was a total of 9 items. Here are some examples: “I feel at ease with my supervisor when 
+asking questions” and “My supervisor asks me how I am doing on a regular basis.”
 
 ### Job Satisfaction Scale
 
@@ -156,7 +157,6 @@ missing_message <- if (!total_missing) {
 @Emmanuel2021 claimed that missing data problems could lead to performance degradation, biased data analysis, and outcomes. After checking the data, `r missing_message`
 
 ## Outliers
-
 ```{r}
 #| label: 3_outliers
 df_content <- data[, 7:49]  # Select Likert-scale response columns
@@ -178,9 +178,7 @@ A univariate outlier analysis was used in the present study. According to @Mowbr
 total_res <- nrow(data)
 response_rate <- (total_res - num_redundant) / total_res * 100 
 ```
-
 The present study distributed questionnaires online, and 232 people responded. However, three respondents were excluded from the analysis for giving redundant responses. Among the data, four respondents gave the same results on all Likert Scale. 228 questionnaires remain for further data analysis. Thus, the response rate was `r sprintf("%.2f%%", response_rate)`.
-
 ```{r, message = FALSE, warning=FALSE}
 #| label: 5_table-response-rate
 #| echo: false
@@ -233,9 +231,7 @@ cat("\\vspace{10mm}") #Add 10mm space below
 ```
 
 ## Normality
-
 In the current study, the Kurtosis and Skewness were conducted, revealing that for the variable of leaders’ emotional intelligence, the values of Kurtosis and Skewness were -1.109 and 0.165; for the variable of leadership effectiveness, the values of Kurtosis and Skewness were -0.957 and 0.102; for the variable of Employee Job Satisfaction, the values of Kurtosis and Skewness were -0.479 and 0.649. @George2010 indicated that the values for skewness and kurtosis of variables are suitable when ranging from -2 to +2. Therefore, the values prove that leaders’ emotional intelligence, leadership effectiveness, and job satisfaction are in a normal univariate distribution. The values of Kurtosis and Skewness are shown in Normality Analysis table.
-
 ```{r, message = FALSE, warning=FALSE}
 #| label: 6_normality_output
 #| echo: false
@@ -300,6 +296,7 @@ knitr::include_graphics("normality_table.png")
 cat("\\vspace{10mm}") #Add 10mm space below
 
 ```
+
 ## Descriptive statistics
 ```{r}
 #| label: 7_descriptive_statistics
@@ -310,7 +307,6 @@ library(psych)
 Descriptive_st <- describe(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
 ```
 According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis.The mean for leaders’ emotional intelligence people rate was `r round(mean(clean_data$EI_Mean), 2)` (SD = `r round(sd(clean_data$EI_Mean), 2)`); the mean for leadership effectiveness was `r round(mean(clean_data$LE_Mean), 2)` (SD = `r round(sd(clean_data$LE_Mean), 2)`); and the mean for job satisfaction was `r round(mean(clean_data$JS_Mean), 2)` (SD = `r round(sd(clean_data$JS_Mean), 2)`).Additionally,Correlation between EI, JS, and LE table declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction.
-
 ```{r}
 #| label: 8_correlation
 #| message: false
@@ -325,69 +321,97 @@ library(gridExtra)
 
 # Plot 1: Correlation between EI_Mean and LE_Mean
 plot1 <- ggplot(clean_data, aes(x = EI_Mean, y = LE_Mean)) + 
-  geom_point(color = "blue") +
-  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_point(color = "pink") +
+  geom_smooth(method = "lm", color = "blue", se = FALSE) +
   stat_cor(method = "pearson", color = "black", label.x = 3, label.y = 4) +
   labs(title = "Correlation between EI and LE", x = "EI Mean", y = "LE Mean") +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))  
 
 # Plot 2: Correlation between EI_Mean and JS_Mean
 plot2 <- ggplot(clean_data, aes(x = EI_Mean, y = JS_Mean)) + 
   geom_point(color = "green") +
-  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_smooth(method = "lm", color = "blue", se = FALSE) +
   stat_cor(method = "pearson", color = "black", label.x = 3, label.y = 4) +
   labs(title = "Correlation between EI and JS", x = "EI Mean", y = "JS Mean") +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
 
 # Plot 3: Correlation between LE_Mean and JS_Mean
 plot3 <- ggplot(clean_data, aes(x = LE_Mean, y = JS_Mean)) + 
-  geom_point(color = "red") +
-  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_point(color = "yellow") +
+  geom_smooth(method = "lm", color = "blue", se = FALSE) +
   stat_cor(method = "pearson", color = "black", label.x = 3, label.y = 4) +
   labs(title = "Correlation between LE and JS", x = "LE Mean", y = "JS Mean") +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))  
 
 grid.arrange(plot1, plot2, plot3, ncol = 2)
 ```
-## Final analysis- Hypothesis Testing
 
+## Final analysis- Hypothesis Testing
+```{r}
+#| label: 9_Hypothesis_Testing
+#| message: false
+#| warning: false
+# write a function to run sobel test  
+sobel_test_function <- function(IV_on_M, M_on_DV) {
+  a <- coef(IV_on_M)[2]  # Coefficient for IV on Mediator
+  b <- coef(M_on_DV)[2]  # Coefficient for Mediator on DV
+  SE_a <- summary(IV_on_M)$coefficients[2, 2]
+  SE_b <- summary(M_on_DV)$coefficients[2, 2]
+
+  sobel_stat <- (a * b) / sqrt(b^2 * SE_a^2 + a^2 * SE_b^2)
+
+  z <- round(sobel_stat, 3)
+  
+  return(z)
+}
+
+# Path a: IV on Mediator
+IV_on_Mediator <- lm(LE_Mean ~ EI_Mean, data = clean_data)
+# Path b: Mediator on DV
+Mediator_on_DV <- lm(JS_Mean ~ LE_Mean, data = clean_data)
+# Path c: IV on DV
+IV_on_DV<- lm(JS_Mean ~ EI_Mean, data = clean_data)
+# Path d: Total effect
+Total_Effect<- lm(JS_Mean ~ EI_Mean + LE_Mean, data = clean_data)
+
+# Extract coefficients, p-values, and T statistics
+beta_a <- coef(IV_on_Mediator)[2]  
+beta_b <- coef(Mediator_on_DV)[2]   
+beta_c <- coef(IV_on_DV)[2]         
+beta_d <- coef(Total_Effect)[2] 
+
+SE_a <- summary(IV_on_Mediator)$coefficients[2, 2]  
+SE_b <- summary(Mediator_on_DV)$coefficients[2, 2] 
+SE_c <- summary(IV_on_DV)$coefficients[2, 2]       
+SE_d <- summary(Total_Effect)$coefficients[2, 2]  
+
+p_a <- summary(IV_on_Mediator)$coefficients[2, 4]  
+p_b <- summary(Mediator_on_DV)$coefficients[2, 4]  
+p_c <- summary(IV_on_DV)$coefficients[2, 4]        
+p_d <- summary(Total_Effect)$coefficients[2, 4]    
+
+z <- sobel_test_function(IV_on_Mediator,Mediator_on_DV)
+```
 H1: Leaders’ emotional intelligence will predict employee job satisfaction.
 
-Results discovered that a leader’s emotional intelligence was a significant predictor of job satisfaction (β=0.765; SE = 0.036; *p* \<.001). This indicates that higher leaders’ emotional intelligence can be considered a predictor of higher employee job satisfaction. In other words, employees working on a team with leaders with high emotional intelligence tend to report high job satisfaction.
+Results discovered that a leader’s emotional intelligence was a significant predictor of job satisfaction (β=`r round(beta_c, 3)`; SE = `r round(SE_c, 3)`; *p* = `r round(p_c, 3)` \< 0.001). This indicates that higher leaders’ emotional intelligence can be considered a predictor of higher employee job satisfaction. In other words, employees working on a team with leaders with high emotional intelligence tend to report high job satisfaction.
 
 H2: Leaders’ emotional intelligence will predict Leadership effectiveness.
 
-Results found that leaders’ emotional intelligence was a significant predictor of leadership effectiveness (β = 0.873; SE = 0.032; *p* \< .001). It means that groups or teams with leaders who have high emotional intelligence can predict the emergence of leadership effectiveness. In other words, leaders with higher emotional intelligence and higher leadership effectiveness may emerge.
+Results found that leaders’ emotional intelligence was a significant predictor of leadership effectiveness (β = `r round(beta_a, 3)`; SE = `r round(SE_a, 3)`; *p* = `r round(p_a, 3)` \< .001). It means that groups or teams with leaders who have high emotional intelligence can predict the emergence of leadership effectiveness. In other words, leaders with higher emotional intelligence and higher leadership effectiveness may emerge.
 
 H3：Leadership effectiveness will predict employee job satisfaction.
 
-Results indicated that leadership effectiveness emerged as a significant predictor of employee job satisfaction (β=0.756, SE = 0.036; *p* \< .001). It implies that leadership effectiveness can positively influence employee job satisfaction. In other words, employees working in an environment that embraces good leadership effectiveness tend to be satisfied with their jobs.
+Results indicated that leadership effectiveness emerged as a significant predictor of employee job satisfaction (β=`r round(beta_b, 3)`, SE = `r round(SE_b, 3)`; *p* = `r round(p_b, 3)` \< .001). It implies that leadership effectiveness can positively influence employee job satisfaction. In other words, employees working in an environment that embraces good leadership effectiveness tend to be satisfied with their jobs.
 
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 
 To determine whether there is a mediation effect of leadership effectiveness between leaders’ emotional intelligence and employee job satisfaction, the method proposed by @Baron1986 was taken. To be concise, the simple regression analysis was run separately with IV (leaders’ emotional intelligence) predicting mediator (leadership effectiveness) and DV (job satisfaction), and mediator predicting DV. Then, a multiple regression analysis was conducted with all variables, including IV, mediator, and DV. The connection between the predictor and dependent variable weakens when the intervening variable is controlled.
 
-The analysis indicated that when leadership effectiveness was entered into the equation, the decrease in the direct path between emotional intelligence and job satisfaction was statistically significant (Z= 16.443, *p* \<.001). It implies that leadership effectiveness partially mediates the relationships between leaders’ emotional intelligence and leadership effectiveness. In other words, leadership effectiveness can strengthen the mechanism of leaders’ emotional intelligence effects on job satisfaction.
-
-```{r}
-IV_on_Mediator <- lm(LE_Mean ~ EI_Mean, data = clean_data)
-summary(IV_on_Mediator)
-Mediator_on_DV <- lm(JS_Mean ~ LE_Mean, data = clean_data)
-summary(Mediator_on_DV)
-IV_on_DV<- lm(JS_Mean ~ EI_Mean, data = clean_data)
-summary(IV_on_DV)
-Total_Effect<- lm(JS_Mean ~ EI_Mean + LE_Mean, data = clean_data)
-summary(Total_Effect)
-
-a <- coef(IV_on_Mediator)[2]  
-b <- coef(Mediator_on_DV)[2]
-
-SE_a <- summary(IV_on_Mediator)$coefficients[2, 2]  
-SE_b <- summary(Mediator_on_DV)$coefficients[2, 2]
-sobel_test <- (a * b) / sqrt(b^2 * SE_a^2 + a^2 * SE_b^2)
-z <- round(sobel_test,3)
-cat("Sobel test: ", z, "\n")
-```
+The analysis indicated that when leadership effectiveness was entered into the equation, the decrease in the direct path between emotional intelligence and job satisfaction was statistically significant (Z= `r round(z, 3)`, *p* \<.001). It implies that leadership effectiveness partially mediates the relationships between leaders’ emotional intelligence and leadership effectiveness. In other words, leadership effectiveness can strengthen the mechanism of leaders’ emotional intelligence effects on job satisfaction.
 
 # Discussion
 
