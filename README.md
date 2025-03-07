@@ -75,11 +75,15 @@ Leader-Emotional-Intelligence-Job-Satisfaction/
 ├── docs/
 │   ├── EI-JS-LE.pdf          # PDF version
 │   ├── EI-JS-LE.html         # HTML version 
-│   └── EI-JS-LE.docx         # Word version
+│ 
+├── image/
+│   ├── hypothesis Framework.png   
+│   ├── response_table.png 
+│   ├── normality_table.png 
 │
 ├── references/
 │   └── bibliography.bib      # BibTeX bibliography file
 │
-├── .rdata                    # R data file 
+├── research-assessment.md                   
 ├── README.md                 # Project description and instructions
 └── .gitignore                # Git ignore file to exclude unnecessary files
