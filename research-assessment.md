@@ -30,9 +30,9 @@ Section:2
 
 Research project title: Leader's Emotional Intelligence and Job Satisfaction: The Mediating Effect of Leadership Effectiveness
 
-Submission date: Feb.26
+Submission date:
 
-Submission number (1-4): 1
+Submission number (1-4):
 
 Project GitHub repository URL: <https://github.com/Fuyy11/Emotional-Intelligence-Job-Satisfaction-Leadership-Effectiveness-12435011>
 
