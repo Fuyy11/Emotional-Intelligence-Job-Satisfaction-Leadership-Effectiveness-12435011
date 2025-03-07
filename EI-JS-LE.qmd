@@ -245,8 +245,8 @@ library(webshot2)
 library(e1071)
 library(knitr)
 
-#use print(redundant_res) to find which columns need to be delated 
-rows_remove <- c(4, 14, 16, 32)
+#use print(redundant_res) in code chunk3 to find which columns need to be delated 
+rows_remove <- c(4, 14, 16, 32) # Specify the row numbers to remove
 clean_data <- data[-rows_remove, ]
 
 clean_data[, 7:49] <- data.frame(lapply(clean_data[, 7:49], as.numeric))
