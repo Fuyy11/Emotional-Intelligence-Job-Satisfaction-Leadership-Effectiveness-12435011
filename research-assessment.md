@@ -99,8 +99,12 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3.  Does not have duplicate/redundant elements
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
-        -   Grader comments: Repo/file/folder names should be informative and relevant to content, not class context (e.g., nrdowling/infant-gesture not nrdowling/d2m-project; infant-gestures.qmd not d2m-final.qmd). FIXED(REMEMBER TO DELATED!)
+
+        -   Grader comments: Repo/file/folder names should be informative and relevant to content, not class context (e.g., nrdowling/infant-gesture not nrdowling/d2m-project; infant-gestures.qmd not d2m-final.qmd).
+
+            FIXED
 
 2.  Maintain an informative and up-to-date README.md
 
@@ -109,8 +113,12 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  Outlines the repo structure with file tree or similar
 
         -   [x] Objective attempt
+
         -   [ ] Objective met
-        -   Grader comments: readme.md done 3.5/14:12
+
+        -   Grader comments:
+
+            readme.md done 3.5/14:12
 
 3.  integrate a GitHub repo with an R studio project, including .gitignore file
 
@@ -225,6 +233,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [ ] Objective met
         -   Grader comments: I see dplyr::mutate (line 172) but no other dplyr or tidyr functions; no pipelines (should minimally apply a function to data then pipe that new data into a sectond function)
 
+        still not finished, need to fix
+
 11. Use `stringr` functions to work with string variables
 
     1.  Uses ate least 2 unique `stringr` functions
@@ -258,7 +268,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     2.  At least one plot is multi-variable
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -266,7 +276,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     1.  Uses at least 2 unique data-mapped `aes()` arguments (e.g., color, shape, size) to group data in a plot in one or multiple plots
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -294,7 +304,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     4.  Uses at least 1 static aesthetic (e.g., color, shape, size) that improves visual clarity without mapping to data
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -340,7 +350,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   Grader comments: no inline R code; do not print analysis results as raw output (save to objects and/or print to formatted tables)
 
-            two inline R code was used in missing data and outliers
+            inline R code was used in missing data and outliers
 
 ### BibTeX
 
