@@ -1,6 +1,6 @@
 ---
 title: "Leader's Emotional Intelligence and Job Satisfaction: The Mediating Effect of Leadership Effectiveness"
-shorttitle: "EI & JS : LE"
+shorttitle: "Emotional Intelligence & Job Satisfaction: Leadership Effectiveness"
 author:
   - name: Yangyang Fu
     corresponding: true
@@ -26,16 +26,7 @@ author-note:
     financial-support: ~
     gratitude: ~
     authorship-agreements: ~
-abstract: |
-  - **Purpose**: This study aimed to determine the effect of leaders’ emotional intelligence on employee job satisfaction and explore the mediating role of leadership effectiveness.
   
-  - **Methodology**: A cross-sectional research design was utilized to study the research objectives. A questionnaire survey collected data from interns and employees, totaling 232 (100 males, 131 females, 1 prefer not to tell). Emotional Intelligence, Job Satisfaction, and Leadership Effectiveness Scales were utilized to measure the three variables.
-  
-  - **Findings**: The findings declared that leaders’ emotional intelligence could predict leadership effectiveness and employee job satisfaction, and leadership effectiveness could also predict job satisfaction. Moreover, leadership effectiveness partially mediated the mechanism of leaders’ emotional intelligence to employee job satisfaction.
-  
-  - **Significances**: This research gives some insights into the importance of leaders’ emotional intelligence within an organization or a team. It may help organizations or teams to improve employee job satisfaction and enhance efficiency and effectiveness.
-  
-keywords: [Leaders’ emotional intelligence, leadership effectiveness, job satisfaction]
 bibliography: bibliography.bib
 format:
   apaquarto-docx: default
@@ -59,6 +50,8 @@ format:
 #install.packages("ggplot2")
 #install.packages("gridExtra")
 #install.packages("ggpubr")
+#install.packages("reshape2")
+#install.packages("ggcorrplot")
 
 library(tidyverse)
 library(knitr)
@@ -71,6 +64,15 @@ library(psych)
 library(ggplot2)
 library(ggpubr)
 library(gridExtra)
+library(reshape2)
+library(ggcorrplot)
+
+# Apply settings 
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
 ```
 
 ```{r}
@@ -98,7 +100,7 @@ clean_data <- clean_data %>%
     LE_Mean = round (rowMeans(select(clean_data, 23:31), na.rm = TRUE), 3),
     JS_Mean = round (rowMeans(select(clean_data, 32:49), na.rm = TRUE), 3))
   
-##might be delated, because not helpful for my thesis purpose
+## not helpful for my thesis purpose
 tidy_data <- clean_data %>%
   select(EI_Mean, LE_Mean, JS_Mean) %>%
   pivot_longer(cols = everything(), 
@@ -106,9 +108,18 @@ tidy_data <- clean_data %>%
                values_to = "Score")
 
 ```
-
+# Abstract
+ - **Purpose**: This study aimed to determine the effect of leaders’ emotional intelligence on employee job satisfaction and explore the mediating role of leadership effectiveness.
+  
+  - **Methodology**: A cross-sectional research design was utilized to study the research objectives. A questionnaire survey collected data from interns and employees, totaling 232 (100 males, 131 females, 1 prefer not to tell). Emotional Intelligence, Job Satisfaction, and Leadership Effectiveness Scales were utilized to measure the three variables.
+  
+  - **Findings**: The findings declared that leaders’ emotional intelligence could predict leadership effectiveness and employee job satisfaction, and leadership effectiveness could also predict job satisfaction. Moreover, leadership effectiveness partially mediated the mechanism of leaders’ emotional intelligence to employee job satisfaction.
+  
+  - **Significances**: This research gives some insights into the importance of leaders’ emotional intelligence within an organization or a team. It may help organizations or teams to improve employee job satisfaction and enhance efficiency and effectiveness.
 Job satisfaction is highly researched in industrial/organizational psychology and is related to the development of organizations worldwide. It is also noted as a predictor for assessing the efficiency and effectiveness of organizations. @Irabor2019 refer to job satisfaction as employees’ emotional response to a job, which could be viewed as the sum of contentment and pleasure. @Irabor2019 indicated that job satisfaction can influence attendance rate, productivity, organizational loyalty, and life satisfaction. Low employee job satisfaction would result in a higher possibility of avoiding the workplace and decreased productivity and quality. The accumulation of negative emotions keeps increasing and ultimately accounts for turnover.
+*keywords*: Leaders’ emotional intelligence, leadership effectiveness, job satisfaction
 
+## Introduction
 @Helm2013 claimed that job satisfaction correlated with employees’ pride and organizational reputation. High job satisfaction in the organization could positively influence employees' sense of group honor and assist in fostering the organization’s reputation, attracting excellent elites. Furthermore, job satisfaction was strongly associated with mental health problems [@Faragher2005], which means satisfied employees are less likely to be overstressed and anxious.
 
 Employee job satisfaction could be impacted by satisfaction with pay, promotion opportunities, and fringe benefits, no matter monetary or nonmonetary reward, organizational rules, and so on [@Kardam2012]. Organizational culture is one of the factors that influence employees’ job satisfaction [@Lund2003]. Organizational values or norms shape or change individuals' behaviors, imperceptibly or compulsively. For example, @Thekedam2010 mentioned that recognition from supervisors or coworkers, no matter blame or praise, is a crucial factor influencing job satisfaction. Recognition programs can contribute to maintaining employees' self-esteem and enthusiasm at high levels [@Danish2010]. It could fulfill employees’ psychological needs within the workplace, thus increasing their motivation. Statista Research Department [@BambooHR2016] that over 80% of employees feel satisfied working in companies with a recognition program, whether formal or informal, whose satisfaction rate is 30% higher than those working for companies with no recognition program. A significant component of the organizational culture is leadership behaviors, including trustiness, role modeling, and communication, which also showed a positive relationship with employees’ outcomes and satisfaction [@ChiokFoongLoke2001].
@@ -136,18 +147,17 @@ H3: Leadership effectiveness will predict employee job satisfaction.
 H4: Leadership effectiveness will mediate leaders’ emotional intelligence and job satisfaction.
 ```{r}
 #| label: framework
-knitr::include_graphics("hypothesis Framework.png")
+knitr::include_graphics("png/hypothesis Framework.png")
 ```
-
-\noindent \textit{Job Satisfaction}
-
+## Literature Review
+### Job Satisfaction
 Job Satisfaction is widely researched by many researchers, whether in industrial organization psychology or management, due to its importance to employees’ mental health and organizational development. @Cumbey1998 described job satisfaction as a feeling depending on the interplay between employees and personal traits, values, and expectations. @Locke1969 specifically defined job satisfaction as a positive emotional state arising when someone agrees to achieve their values and goals in the workplace; job dissatisfaction was negative feelings resulting from being unable to attain their values and goals. @Aziri2011 also defined job satisfaction as a combination of feelings and beliefs about their current work, which ranges between extremes (extreme satisfaction and extreme dissatisfaction). An encompassing definition of job satisfaction can be seen as feelings about work experience, including fulfillment and engagement, a working environment, and interpersonal relationships.
 
 Numerous studies relate job satisfaction with employee performance; for example, @Inuwa2016 found a significant positive relationship between employee satisfaction and employee performance. The study found that an increase in job satisfaction of employees can directly lead to higher performance. @Aziri2011 also gave similar results, which implies that employees who are satisfied due to some recognition and rewards are more likely to lead to more significant performance effort and achieve a higher level of job performance. Moreover, @Khan2012 also found that high-level job satisfaction can predict better employee performance in Pakistan. 
 
 However, little research has been conducted on employees’ job satisfaction in the Chinese context. The last four decades of research before 2009 on job satisfaction and work outcomes were based on Western culture, and @Han2009 also highlighted that job satisfaction was closely related to culture, such as Hofstede’s six cultural dimensions, which means specific cultural contexts would have some impacts, such as deeply rooted Confucianism perspective [@Zhang2019]. In addition, according to Hofstede’s theory about six cultural dimensions, China has a high score in power distance, which may lead to downward pressure on employees and the ignoring of leaders themselves. @Lu2011 said that heavy workload and especially interpersonal conflict play an important role in work stress in the Greater China Zone. @Zhang2019 explained that a Confucian-based work ethic characterized by hard work, endurance, collectivism, and “guanxi” (personal network) expected Chinese employees to take full responsibility, promote social harmony, and advance collective interests. The working environment produced under the cultivation of Chinese culture leads to different expectations from organizations and leaders, as well as different working standards in employees’ hearts. A past study conducted by @Luu2010 found that high job satisfaction is related to low turnover intention in America. However, some researchers, such as @Wong2001, indicated that job satisfaction can’t effectively predict turnover intention within China. Therefore, looking into the Chinese context could help to figure out the feelings of employees and develop customized programs to improve conditions. There are five primary dimensions of job satisfaction, including salaries, promotion opportunities, supervision, nature of work, and colleagues, according to the research by @Aslaniyan2013. They clarify that pay satisfaction is related to feelings of deserving and worthy; promotion satisfaction is linked to organizations’ policy, fairness, and employees’ ability; supervision and colleagues mean their feelings for bosses and co-workers; the nature of work represents characteristics of work itself, including challenge, interest, and comfort [@Aslaniyan2013]. @Waqas2014 also mentioned that reward and recognition and the workplace environment can also influence it, respectively contributing to 49.8% and 25.7% of job satisfaction levels. A reward as a tangible gift and recognition are both used to acknowledge the public or organization's employees’ contribution [@Waqas2014], which can motivate employees and increase their job satisfaction, whether mentally or physically. Working environment, including lighting, temperature, workspace, and ambient conditions, can influence employees’ perception of comfort [@Waqas2014]. The present study will examine job satisfaction in the Chinese context to figure out how it would be influenced by leaders’ EI and find ways to improve the current situation of low job satisfaction in China.
 
-\noindent \textit{Leader’s Emotional Intelligence}
+### Leader’s Emotional Intelligence
 
 EI is considered a significant tool for interacting with people, whether in a small conversation or on other essential occasions. In 2019, more than 50% of organizations respondents worldwide indicated that they would evaluate senior and mid-management EI skills and choose to hire them or not based on it [@Capgemini2019]. The high percentage of EI measures used reveals the growing importance of EI in organizational management. The high percentage of EI measures used reveals the growing importance of EI in organizational management. According to @Yadav2019, EI has already been established in some non-cognitive metrics, including problem-solving skills. They also summarize Goleman's definition of EI into four kinds of abilities: zeal, self-control, self-motivation, and persistence, characterized by understanding, managing, and recognizing emotions, and handling motivations and relationships [@Yadav2019]. @Mayer1990 divided EI into four branches as well, including appraising and perceiving, assimilating, understanding, and regulating emotions. Here is a tricky point @Ramesar2009 suggested about emotion concepts: emotions are shorter and more intense than moods. @Martinez1997 defined EI more concisely into non‐cognitive skills, capabilities, and competencies, which determine how people manage and respond to environmental challenges and pressure. Most definitions of EI talk about the ability to manage and sense emotions instead of moods, converting them into effective actions and interactions.
 
@@ -155,7 +165,7 @@ Some researchers found that EI correlated with people’s stress management, whi
 
 In common research, EI is usually measured by self-report scales using quantitative methods. @AugustoLanda2008 did a questionnaire survey to investigate the relationships between EI, work stress, and health. Self-report scales were used to evaluate participants’ EI. They found that EI serves as a protective element against stress and promotes overall health and well-being [@AugustoLanda2008]. However, the accuracy of the EI self-report is questioned. @Rosete2005 insisted that self-report scales are easily influenced by respondents’ personalities, leading to some confusion. The domain research about EI uses self-reporting to assess, but little research has been conducted to study leaders’ EI through others’ observations. Moreover, @Gokcen2014 said East Asian individuals typically tend to show self-criticism and emphasize negative self-relevant information compared to North Americans. Self-perception, as a crucial aspect of EI, influenced by cultural differences and tendencies, can be essential to outcomes in China compared to different countries. That’s the reason why the present study aims to discover how leaders’ EI is evaluated by subordinates' work and how East Asian special perspectives would influence the process compared to Western countries. Factors including personal factors that influence EI are still controversial [@Rauf2013]; for example, @VanRooy2005 found there was a significant difference between males and females, but others held opposite ideas [@Katyal2017]. @Rauf2013 discovered that their study showed only family monthly income, not parents' employment and parental educational level, has a positive relationship with EI. However, it is inconsistent with the research done by @Davis-Kean2005, which supported that parents’ educational background can positively influence children’s EI. This study investigates leaders’ EI through others’ evaluation and observation in the context of the Chinese working environment and identifies its effect on leadership effectiveness and subordinates. Moreover, it could help organizations improve leaders’ selection systems and facilitate the forming of more suitable and efficient teams.
 
-\noindent \textit{Leadership Effectiveness}
+### Leadership Effectiveness
 
 Leadership Effectiveness is one of the important elements in evaluating leadership and outcomes, and it’s also a determined factor for teams or organizations in achieving success. Leadership effectiveness can be understood as successful outcomes in achieving common goals or missions from leaders’ influence. @Sadeghi2012 said it highly depends on the consequences and impacts of leaders’ activities on their followers, teams, or organizations. Many studies have found that leadership effectiveness was correlated with leadership styles. @Sadeghi2012 claimed that transformational leadership behavior can motivate followers and have positive impacts on the organization’s effectiveness and productivity. @SonmezCakir2020 argued that leadership effectiveness is a wavier behavior that is exchanged for organizations’ benefits, which can inspire employees’ behaviors and shape their goals through enhancing employees’ commitments and motivations, thus leading to a positive impact on organizations. Furthermore, leadership effectiveness can influence engaging employees’ “beliefs, attitudes, norms, values, and behaviors” in the long-term [@SonmezCakir2020, p. 2]. According to @Rawat2023, efficient leadership from successful leadership can foster and facilitate a sense of confidence and independence within teams, ensuring they can cope with dynamic environments. It could also help form adaptive resilience, including changing plans to adapt, thrive, and recover during the crisis [@Rawat2023]. 
 
@@ -267,11 +277,11 @@ table_gt <- Response_table %>%
   )
 
 # Save the table as an PNG
-gtsave(table_gt, "response_table.png", expand = 20, vwidth = 1000, vheight = 600)
+gtsave(table_gt, "png/response_table.png", expand = 20, vwidth = 1000, vheight = 600)
 
 # insert the image 
 cat("\\vspace{10mm}") # Add 10mm space above
-knitr::include_graphics("response_table.png")
+knitr::include_graphics("png/response_table.png")
 cat("\\vspace{10mm}") #Add 10mm space below
 ```
 
@@ -318,12 +328,12 @@ normality_gt <- Normality_table %>%
   )
 
 # Save as a PNG
-gtsave(normality_gt, "normality_table.png", expand = 20, vwidth = 1000, vheight = 600)
+gtsave(normality_gt, "png/normality_table.png", expand = 20, vwidth = 1000, vheight = 600)
 
 # Insert the image 
-cat("\\vspace{10mm}") # Add 10mm space above
-knitr::include_graphics("normality_table.png")
-cat("\\vspace{10mm}") #Add 10mm space below
+
+knitr::include_graphics("png/normality_table.png")
+
 
 ```
 
@@ -332,15 +342,13 @@ cat("\\vspace{10mm}") #Add 10mm space below
 #| label: descriptive_statistics
 #| message: false
 #| warning: false
-
 Descriptive_st <- describe(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
 ```
-According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis.The mean for leaders’ emotional intelligence people rate was `r round(mean(clean_data$EI_Mean), 2)` (SD = `r round(sd(clean_data$EI_Mean), 2)`); the mean for leadership effectiveness was `r round(mean(clean_data$LE_Mean), 2)` (SD = `r round(sd(clean_data$LE_Mean), 2)`); and the mean for job satisfaction was `r round(mean(clean_data$JS_Mean), 2)` (SD = `r round(sd(clean_data$JS_Mean), 2)`).Additionally,Correlation between EI, JS, and LE table declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction.
+According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis.The mean for leaders’ emotional intelligence people rate was `r round(mean(clean_data$EI_Mean), 2)` (SD = `r round(sd(clean_data$EI_Mean), 2)`); the mean for leadership effectiveness was `r round(mean(clean_data$LE_Mean), 2)` (SD = `r round(sd(clean_data$LE_Mean), 2)`); and the mean for job satisfaction was `r round(mean(clean_data$JS_Mean), 2)` (SD = `r round(sd(clean_data$JS_Mean), 2)`).Additionally,Correlation between EI, JS, and LE table declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction^[The relatinoshiop can be seen in Correlation Heatcamp.].
 ```{r}
 #| label: correlation
 #| message: false
 #| warning: false
-
 
 # Create three individual plots for correlation between pairs of variables
 
@@ -349,7 +357,9 @@ plot1 <- ggplot(clean_data, aes(x = EI_Mean, y = LE_Mean)) +
   geom_point(color = "pink") +
   geom_smooth(method = "lm", color = "blue", se = FALSE) +
   stat_cor(method = "pearson", color = "black", label.x = 3, label.y = 4) +
-  labs(title = "Correlation between Leaders' Emotional Intelligence and Leadership Effectiveness", x = "Emotional Intelligence", y = "Leadership Effectiveness") +
+  labs(title = "Correlation between EI and LE",
+       subtitle = "EI: Leader's Emotional Intelligence, LE:Leadership Effectiveness",
+       x = "Emotional Intelligence", y = "Leadership Effectiveness") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))  
 
@@ -358,7 +368,9 @@ plot2 <- ggplot(clean_data, aes(x = EI_Mean, y = JS_Mean)) +
   geom_point(color = "green") +
   geom_smooth(method = "lm", color = "blue", se = FALSE) +
   stat_cor(method = "pearson", color = "black", label.x = 3, label.y = 4) +
-  labs(title = "Correlation between Leaders' Emotional Intelligence and Job Satisfaction", x = "Emotional Intelligence", y = "Job Satisfaction") +
+  labs(title = "Correlation between EI and JS", 
+      subtitle = "EI: Leader's Emotional Intelligence, JS = Job Satisfaction",
+      x = "Emotional Intelligence", y = "Job Satisfaction") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -367,34 +379,11 @@ plot3 <- ggplot(clean_data, aes(x = LE_Mean, y = JS_Mean)) +
   geom_point(color = "yellow") +
   geom_smooth(method = "lm", color = "blue", se = FALSE) +
   stat_cor(method = "pearson", color = "black", label.x = 3, label.y = 4) +
-  labs(title = "Correlation between Leadership Effectiveness and Job Satisfaction", x = "Leadership Effectiveness", y = "Job Satisfaction") +
+  labs(title = "Correlation between LE and JS",
+       subtitle = "LE:Leadership Effectiveness, JS:Job Satisfaction",
+       x = "Leadership Effectiveness", y = "Job Satisfaction") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5)) 
-
-
-grid.arrange(plot1, plot2, plot3, ncol = 2)
-
-
-#another option:looks not good 
-# Load necessary packages
-library(ggplot2)
-library(dplyr)
-library(forcats)
-
-
-# Use forcats to reorder the variables by their mean scores
-tidy_data$Variable <- fct_reorder(tidy_data$Variable, tidy_data$Score, .fun = "mean")
-
-# Create the plot using ggplot
-ggplot(tidy_data, aes(x = Variable, y = Score)) +
-  geom_boxplot(aes(color = Variable), alpha = 0.7) + # Boxplot to show score distribution
-  geom_jitter(aes(color = Variable), width = 0.1, alpha = 0.5) + # Jitter for individual data points
-  facet_wrap(~Variable, scales = "free") + # Faceting by variable
-  labs(title = "Correlation Between EI_Mean, LE_Mean, and JS_Mean", 
-       x = "Variables", 
-       y = "Mean Scores") +
-  theme_minimal() +
-  theme(legend.position = "none") # Hide legend as we're faceting
 
 ```
 
@@ -686,3 +675,39 @@ I have read and understood the information provided and have had the opportunity
 - [ ] Electric gas
 
 - [ ] others
+
+## Correlation Image
+```{r}
+#| label: plot 1
+#| message: false
+plot1
+```
+
+```{r}
+#| label:  plot 2 
+#| message: false
+plot2
+```
+
+```{r}
+#| label: plot 3
+plot3
+```
+
+```{r}
+#| label: fig-heatmap
+
+# creat a heatmap
+cor_matrix <- cor(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], use = "pairwise.complete.obs")
+
+cor_data <- reshape2::melt(cor_matrix)
+
+ggplot(cor_data, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile(color = "white") +  # White grid lines for separation
+  geom_text(aes(label = round(value, 2)), color = "black", size = 5) + # Show correlation values
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  labs(title = "Correlation Heatmap", fill = "Correlation") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+
