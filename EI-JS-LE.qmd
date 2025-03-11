@@ -344,7 +344,7 @@ knitr::include_graphics("png/normality_table.png")
 #| warning: false
 Descriptive_st <- describe(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")])
 ```
-According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis.The mean for leaders’ emotional intelligence people rate was `r round(mean(clean_data$EI_Mean), 2)` (SD = `r round(sd(clean_data$EI_Mean), 2)`); the mean for leadership effectiveness was `r round(mean(clean_data$LE_Mean), 2)` (SD = `r round(sd(clean_data$LE_Mean), 2)`); and the mean for job satisfaction was `r round(mean(clean_data$JS_Mean), 2)` (SD = `r round(sd(clean_data$JS_Mean), 2)`).Additionally,Correlation between EI, JS, and LE table declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction^[The relatinoshiop can be seen in Correlation Heatcamp.].
+According to @Marshall2010, descriptive statistics describe the characteristics of the raw data, including central tendency, dispersion, mean, median, standard deviation, and so on. It is an easy and helpful method for researchers to summarize the sample while assisting in further data analysis.The mean for leaders’ emotional intelligence people rate was `r round(mean(clean_data$EI_Mean), 2)` (SD = `r round(sd(clean_data$EI_Mean), 2)`); the mean for leadership effectiveness was `r round(mean(clean_data$LE_Mean), 2)` (SD = `r round(sd(clean_data$LE_Mean), 2)`); and the mean for job satisfaction was `r round(mean(clean_data$JS_Mean), 2)` (SD = `r round(sd(clean_data$JS_Mean), 2)`).Additionally,Correlation between EI, JS, and LE table declared that there were positive relationships between leaders’ EI, leadership effectiveness, and employee job satisfaction.
 ```{r}
 #| label: correlation
 #| message: false
@@ -387,6 +387,22 @@ plot3 <- ggplot(clean_data, aes(x = LE_Mean, y = JS_Mean)) +
 
 ```
 
+```{r}
+#| label: heatmap
+
+# creat a heatmap
+cor_matrix <- cor(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], use = "pairwise.complete.obs")
+
+cor_data <- reshape2::melt(cor_matrix)
+
+ggplot(cor_data, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile(color = "white") +  # White grid lines for separation
+  geom_text(aes(label = round(value, 2)), color = "black", size = 5) + # Show correlation values
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  labs(title = "Correlation Heatmap", fill = "Correlation") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
 ## Final analysis- Hypothesis Testing
 ```{r}
 #| label: Hypothesis_Testing
@@ -694,20 +710,4 @@ plot2
 plot3
 ```
 
-```{r}
-#| label: fig-heatmap
-
-# creat a heatmap
-cor_matrix <- cor(clean_data[, c("EI_Mean", "LE_Mean", "JS_Mean")], use = "pairwise.complete.obs")
-
-cor_data <- reshape2::melt(cor_matrix)
-
-ggplot(cor_data, aes(x = Var1, y = Var2, fill = value)) +
-  geom_tile(color = "white") +  # White grid lines for separation
-  geom_text(aes(label = round(value, 2)), color = "black", size = 5) + # Show correlation values
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
-  labs(title = "Correlation Heatmap", fill = "Correlation") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
-```
 

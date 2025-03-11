@@ -366,7 +366,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments: 2 small things:
+        -   Grader comments:
 
 ### Notebooks and code chunks
 
@@ -434,11 +434,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments: results are displayed as raw R output
-
-            Fix the raw output
-
-            `summary() and lm() in chunk 11`
+        -   Grader comments:
 
 ### R Markdown and Quarto
 
