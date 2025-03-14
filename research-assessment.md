@@ -100,7 +100,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -112,9 +112,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
-        -   Grader comments:
+        -   Grader comments: 
 
 3.  integrate a GitHub repo with an R studio project, including .gitignore file
 
@@ -126,7 +126,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments:
+        -   Grader comments: .gitignore should include (minimally) a localonly folder and pdf render files (e.g., the *_files folder, .ttt, .tex., .log, etc.), as well as comments describing the ignored items (in addition to the default ignored items if you’re using a template)
 
 4.  effectively use version control
 
@@ -151,7 +151,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -163,7 +163,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -189,7 +189,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments:
+        -   Grader comments: I only see if/else statements. If there are others that I'm missing let me know and I'll give you this point.
 
 9.  Use `readr` functions to read in and write out data
 
@@ -212,7 +212,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3.  Combines `dplyr` and `tidyr` functions in a data transformation pipeline
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 11. Use `stringr` functions to work with string variables
@@ -225,7 +225,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments:
+        -   Grader comments: I only see str_glue. If you have a second let me know and I'll give you this point.
 
 12. Use `forcats` functions to work with factor variables
 
@@ -250,7 +250,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -262,7 +262,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments:
+        -   Grader comments: I only see fill on line 398. If you have another let me know and I'll give you this point.
 
 15. Use facets to create parallel plots
 
@@ -292,7 +292,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments:
+        -   Grader comments: Your in-text plot (the heatmap) does not have informative axis labels or ticks; nothing on a plot should display as "raw", or something that exists in the data (like a variable name) that would never exist in plain English.
 
 ### Data analysis
 
@@ -332,7 +332,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -348,7 +348,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -365,8 +365,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     5.  May include references not cited in-text
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments:
+        -   [x] Objective met
+        -   Grader comments: Take a look at your bib file and/or Zotero. There are some issues with formatting, capitalization, spelling at a few spots
 
 ### Notebooks and code chunks
 
@@ -382,9 +382,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
-        -   Grader comments:
+        -   Grader comments: I'm giving you this, but you're pushing the limits of the 1-chunk-1-thing rule!
 
 23. Use code chunks to set up a quarto document
 
@@ -398,7 +398,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -416,7 +416,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective met
 
-        -   Grader comments:
+        -   Grader comments: Label the chunks that produce figures as `fig-the-figure-name` and tables as `tbl-the-table-name`. Use the fig-cap and tbl-cap options to add titles. Use `@fig-the-figure-name` syntax to cross-reference.
 
 25. Execute descriptive and inferential analyses in code chunks
 
@@ -432,9 +432,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
-        -   Grader comments:
+        -   Grader comments: giving you the point, but you should really have analyses in their own individual chunks!
 
 ### R Markdown and Quarto
 
@@ -457,7 +457,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -471,7 +471,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -481,7 +481,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
 
-        -   [ ] Objective met
+        -   [x] Objective met
 
         -   Grader comments:
 
@@ -500,6 +500,12 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [ ] Objective met
 
         -   Grader comments:
+            - Figures and tables do not render inline
+            - Figures and tables are not recognized as such, and cannot be cross-referenced
+            - Abstract is produced as a section rather than product of YAML, which adds it after the title
+            - "Introduction" heading is not used in APA
+            - Analysis reports are not in APA style (little things like the "p" or beta being in italics)
+            - All figures should be smaller (no more than 50% height of the page)
 
 ## Reflection (Optional)
 
@@ -534,8 +540,12 @@ Alternatively/additionally in mind some of the suggested ways to earn engagement
 
 All final projects are graded by Dr. Dowling. You will see your grade on Canvas separated into two categories: objective points and engagement points.
 
--   **Objective points:** 6/30
--   **Engagement points:** 3/10
--   **Total points:** 9/40
+-   **Objective points:** 21/30
+-   **Engagement points:** 8/10
+-   **Total points:** 29/40
 
-**Comments:** Nice start, Yangyang! Be sure that when you attempt an objective you've looked closely at what the expectations are. You can potentially get points without exactly meeting those expectations if you truly go above and beyond with that objective in another way, but you can't go wrong with being very particular about meeting what is outlined.
+**Comments:** 
+
+Final - Great work, Yangyang! This has come a long way from your first draft. You've made a lot of progress in terms of both the content and the structure of your project. It sounds like rendering plots and tables ended up being a real challenge for you. Even though you weren't able to do everything by the objectives' expectations, you still managed to find a workaround to get the plots in one way or another. The best code is the code that works. :)
+
+Nice start, Yangyang! Be sure that when you attempt an objective you've looked closely at what the expectations are. You can potentially get points without exactly meeting those expectations if you truly go above and beyond with that objective in another way, but you can't go wrong with being very particular about meeting what is outlined.
